@@ -1,15 +1,27 @@
 <template>
   <div id="app">
-    <router-view/>
+    <transition>
+      <router-view/>
+    </transition>
   </div>
 </template>
 
 <script>
+
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    
+  }
 }
 </script>
 
-<style>
-
+<style scoped>
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5;
+  }
+  .fade-enter, .fade-enter-to {
+    opacity: 0;
+  }
 </style>

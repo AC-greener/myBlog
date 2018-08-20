@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-   <h1>hello myblog</h1>
+   <h1>前端页面</h1>
   </div>
 </template>
 
