@@ -1,8 +1,9 @@
 <template>
   <div>
     <router-link v-for="(item, index) in list" :to='item.path' :key="index">
-      <el-row>
-        <div class="grid-content bg-purple-dark">{{item.content}}</div>
+      <el-row >
+        <i :class="item.iconClass"></i> 
+        <span class="grid-content bg-purple-dark">{{item.content}}</span>
       </el-row>
     </router-link>
   </div>
@@ -14,12 +15,15 @@ export default {
   data () {
     return {
       list: [{
+        iconClass: 'el-icon-edit',
         path: '/admin/articleAdmin',
         content: '文章管理'
       },{
+        iconClass: 'el-icon-tickets',
         path: '/admin/categoryAdmin',
         content: '分类管理'
       },{
+        iconClass: 'el-icon-message',
         path: '/admin/commentAdmin',
         content: '评论管理'
       }]
@@ -29,27 +33,27 @@ export default {
 </script>
 
 <style scoped>
+a {
+  text-decoration-line: none;
+}
+* {
+  color: aliceblue;
+  background-color:#303133
+}
   .el-row {
-    margin-bottom: 20px;
+    text-align: center;
+    /* margin: 20px; */
+    margin-top: 30px;
   }
   .el-col {
     border-radius: 4px;
   }
-  .bg-purple-dark {
-    background: #99a9bf;
-  }
-  .bg-purple {
-    background: #d3dce6;
-  }
-  .bg-purple-light {
-    background: #e5e9f2;
-  }
+  
   .grid-content {
     border-radius: 4px;
     min-height: 36px;
   }
   .row-bg {
     padding: 10px 0;
-    background-color: #f9fafc;
   }
 </style>
