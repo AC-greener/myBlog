@@ -74,12 +74,12 @@ export default {
   }
 }
 </script>
-  <style scoped>
+<style scoped>
   .labelWrap {
     padding-left: 20px;
-     text-align:center; 
-     height:40px; 
-     line-height:40px 
+    text-align:center; 
+    height:40px; 
+    line-height:40px 
   }
   * {
     color: black;

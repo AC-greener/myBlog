@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import HelloWorld from '@/components/HelloWorld'
+import Introduce from '@/pages/introduce/Introduce'
 import Admin from '@/pages/admin/Admin'
 import Article from '@/pages/admin/components/Article'
 import Category from '@/pages/admin/components/Category'
@@ -14,8 +14,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Introduce',
+      component: Introduce
     },
     {
       path: '/admin',
