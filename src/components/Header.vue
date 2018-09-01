@@ -6,8 +6,8 @@
       </div>
       <div class="category">
         <div><router-link to="/">首页</router-link></div>
-        <div><router-link to="">我的博客</router-link></div>
-        <div><router-link to="">留言板</router-link></div>
+        <div><router-link to="/blog">我的博客</router-link></div>
+        <div><router-link to="/comment">留言板</router-link></div>
         <div><router-link to="">我的作品集</router-link></div>
       </div>
       <div class="introduceMe">
@@ -29,6 +29,7 @@ export default {
   * {
     font-family: "merriweather",SimSun,"宋体",serif;
     text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    color: #fff;
   }
   a {
     text-decoration: none;
@@ -63,6 +64,9 @@ export default {
   .category {
     display: flex;
     justify-content: center;
+  }
+  .category div {
+    margin: 14px;
   }
 </style>
 

@@ -45,21 +45,15 @@ export default {
 }
 </script>
 <style scoped>
-* {
-  color: aliceblue;
-  background-color:#303133;
-  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-}
-.el-header {
+  * {
+    color: aliceblue;
+    background-color:#303133;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  }
+  .el-header {
     line-height: 40px;
   }
   
-  .el-aside {
-
-  }
-  /* .el-row {
-    margin-bottom: 20px;
-  } */
   .el-col {
     border-radius: 4px;
   }

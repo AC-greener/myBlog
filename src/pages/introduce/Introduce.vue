@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import IntroduceHeader from '@/pages/introduce/components/Header'
+import IntroduceHeader from '@/components/Header'
 import IntroduceComment from '@/pages/introduce/components/Comment'
 import IntroduceFooter from '@/pages/introduce/components/Footer'
 export default {

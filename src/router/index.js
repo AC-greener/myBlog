@@ -2,10 +2,14 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Introduce from '@/pages/introduce/Introduce'
+import Comment from '@/pages/comment/Comment'
+import Blog from '@/pages/blog/Blog'
+
+
 import Admin from '@/pages/admin/Admin'
-import Article from '@/pages/admin/components/Article'
-import Category from '@/pages/admin/components/Category'
-import Comment from '@/pages/admin/components/Comment'
+import AdminArticle from '@/pages/admin/components/Article'
+import AdminCategory from '@/pages/admin/components/Category'
+import AdminComment from '@/pages/admin/components/Comment'
 
 
 Vue.use(Router)
@@ -24,22 +28,31 @@ export default new Router({
       children: [
         {
           path: 'articleAdmin',
-          name: 'Article',
-          component: Article
+          name: 'AdminArticle',
+          component: AdminArticle
         },
         {
           path: 'commentAdmin',
-          name: 'Comment',
-          component: Comment
+          name: 'AdminComment',
+          component: AdminComment
         },
         {
           path: 'categoryAdmin',
-          name: 'Category',
-          component: Category
+          name: 'AdminCategory',
+          component: AdminCategory
         }
       ]
     }, 
-   
+    {
+      path: '/comment',
+      name: 'Comment',
+      component: Comment
+    },
+    {
+      path: '/blog',
+      name: 'Blog',
+      component: Blog
+    }
   ],
   mode: 'history'
 })
