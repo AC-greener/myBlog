@@ -3,7 +3,7 @@
     <div class="commentLeft">
       <comment-left />
     </div>
-    <div class="commentRight" style="display:none">
+    <div class="commentRight" >
         <header>
           <h1><strong>留言板</strong></h1>
           <h3 style="font-size:24px"><strong>已有100人在此留言</strong></h3>

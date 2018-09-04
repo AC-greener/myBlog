@@ -3,7 +3,9 @@ import Router from 'vue-router'
 
 import Introduce from '@/pages/introduce/Introduce'
 import Comment from '@/pages/comment/Comment'
+
 import Blog from '@/pages/blog/Blog'
+import BlogDetail from '@/pages/blog/components/Detail'
 
 
 import Admin from '@/pages/admin/Admin'
@@ -50,9 +52,16 @@ export default new Router({
     },
     {
       path: '/blog',
-      name: 'Blog',
-      component: Blog
+      name: 'Blog', 
+      component: Blog,
+   
+    },
+    {
+      path: '/blog/detail',
+      name: 'BlogDetail',
+      component: BlogDetail
     }
+  
   ],
   mode: 'history'
 })
