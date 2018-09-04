@@ -33,9 +33,7 @@ export default {
 
 <style lang='scss' >
   $color: #428bca;
-  a {
-    text-decoration: none;
-  }
+ 
   .blogWrapper {
     width: 100%;
     height: 800px;

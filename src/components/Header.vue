@@ -8,8 +8,8 @@
         <div><router-link to="/" title="首页"><i class="iconfont-sm">&#xe61b;</i></router-link></div>
         <div><router-link to="/blog" title="我的博客"><i class="iconfont-sm">&#xe61c;</i></router-link></div>
         <div><router-link to="/comment" title="留言板"><i class="iconfont-sm">&#xe744;</i></router-link></div>
-        <div><a href="https://codepen.io/ac-greener/" title="codepen"><i class="iconfont-sm">&#xe65b;</i></a></div>
-        <div><a href="https://github.com/AC-greener" title="github"><i class="iconfont-sm">&#xe6a4;</i></a></div>
+        <div><a href="https://codepen.io/ac-greener/" target="_blank" title="codepen"><i class="iconfont-sm">&#xe65b;</i></a></div>
+        <div><a href="https://github.com/AC-greener" target="_blank" title="github"><i class="iconfont-sm">&#xe6a4;</i></a></div>
       </div>
       <div class="introduceMe">
         <h2>我是朱通通</h2>
@@ -30,10 +30,16 @@ export default {
   * {
     font-family: "merriweather",SimSun,"宋体",serif;
     text-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    color: #fff;
   }
+   /* .router-link-active {
+    color: red ;
+  } */
   a {
+    color: #fff;
     text-decoration: none;
+  }
+   a:hover {
+    color: #ccc;
   }
   section {
     margin-bottom: 20px;

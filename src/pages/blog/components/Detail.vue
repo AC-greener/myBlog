@@ -5,7 +5,7 @@
         深入理解JavaScript闭包
         
       </h1>
-      <div class="createTime">--By zhutongtong on June 24, 2017, 3642 人读过</div>
+      <div class="createTime">——By zhutongtong on 2018-08-24, 3642 人读过</div>
       <div class="category">
         <div><router-link to="/" title="首页"><i class="iconfont-sm">&#xe61b;</i></router-link></div>
         <div><router-link to="/blog" title="我的博客"><i class="iconfont-sm">&#xe61c;</i></router-link></div>
@@ -15,7 +15,7 @@
       </div>
     </header>
     <article class="articleContent">
-因为习惯问题，我每天睡觉之前都会打开公众号后台，看看后台消息。可能有些没有来得及回，但都有查看。过后，要么抽时间回复过去，要么梳理成文。
+    因为习惯问题，我每天睡觉之前都会打开公众号后台，看看后台消息。可能有些没有来得及回，但都有查看。过后，要么抽时间回复过去，要么梳理成文。
 前天晚上，我收到这样一条消息:
 "影子，你说在大学是不是一定就要化妆，要把自己打扮得很前卫时髦，难道自然朴素一点不可以吗？"
 女生正处在大一，经常在食堂被某些同学叫成土包子，同学也不太愿意和她坐在一起。
@@ -23,9 +23,7 @@
 后来，女孩给我发了一张没有经过任何ps的素颜照。
 我看了照片觉得，并没有她同学描述的那样不可见人，只是纯粹的没化妆，眼睛有些小，额头冒了几颗痘。
 不够惊艳，但也不至于在平均线以下的。
-
 怎么说呢，没有人规定上大学的女生就一定要化妆吧。至少我身边大学朋友素颜的，一抓一大把。
-
 她们依旧优秀，参加各种活动，被成功保研，或者毕业后找到一份不错的工作等等，她们一个个活得闪亮又迷人。
 
 她们平时也不化妆，但是没人会把"土"和她们联系在一起，因为她们展示给别人的从来不是她们的妆容，而是自己的能力以及对待生活的那种态度。
@@ -61,6 +59,42 @@
 不是的。
 
     </article>
+        <div class="commentRight" >
+          <header>
+            <h1><strong>评论区</strong></h1>
+            <!-- <h3 style="font-size:24px"><strong>已有100人在此留言</strong></h3> -->
+          </header>
+        <form class="doComment" action="" method="post">
+          <div>
+            <img class="img" src="@/assets/img/user.png" alt="用户头像  ">
+            <input style="margin-left:100px; margin-top:-50px; display:block" type="text" placeholder="在此输入您的大名">
+          </div>
+          <div>
+            <textarea name="" id=""  rows="5" style="margin-right:10%; width:100%;" placeholder="我也来说几句" ></textarea>
+          </div>
+          <div>
+            <input type="email" placeholder="Email地址">
+            <button>提交</button>
+          </div>
+        </form>
+        <div class="peopleCommentWrap">
+          <div>
+            <img class="img" src="@/assets/img/user.png" alt="用户头像  ">
+            <span class="userName">张三</span>
+          </div>
+          <div class="peopleComment">
+            you’re a real cool guy！
+            you’re a real cool guy！
+            you’re a real cool guy！
+            you’re a real cool guy！
+         
+          </div>
+          <div class="doLike">
+            <div class="like">喜欢</div>
+            <div class="dislike" style="margin-left:50px">不喜欢</div>
+          </div>
+        </div> 
+    </div> 
   </div>
 </template>
 
@@ -73,13 +107,17 @@ export default {
 <style lang='scss'>
 
  $color: #428bca;
-  * {
-    background-color: #BCD;
-  }
-  a {
+  
+  .category a {
+    color: #fff; 
     text-decoration: none;
   }
+  i:hover {
+    color: #ddd;
+    transform: rotate(-17deg);
+  }
   .detailBlogWrapper {
+    background-color: #BCD;
     width: 100%;
     height: 1800px;
     display: flex;
@@ -110,6 +148,81 @@ export default {
     width: 60%;
     line-height: 25px;
     word-spacing: 5px;
+    background: #bbccee9c;
+  }
+ 
+ * {
+      font-family: "merriweather",SimSun,"宋体",serif;
+  }
+   header {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 60px;
+  }
+  .img {
+    clip-path: circle(50%);
+    width: 76px;
+    height: 76px;
+  }
+  .commentRight {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 1800px;
+    background-color: #BCD;
+
+  }
+  .doComment {
+    width: 80%;
+    display: flex;
+    // height: 360px;
+    flex-direction: column;
+    background-color: white;
+    margin: 20px;
+    padding-bottom: 25px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  }
+  .doComment div {
+    margin: 10px;
+    margin-left: 40px;
+  }
+  .doComment input, textarea, button {
+    background-color: white;
+    padding: 5px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  input {
+    width: 30%;
+    height: 40px;
+  } 
+  button {
+    height: 40px;
+    width: 10%;
+  }
+  .peopleCommentWrap {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin: 30px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    padding-bottom: 20px;
+  }
+  .peopleCommentWrap div {
+    margin: 10px;
+    margin-left: 40px;
+  }
+  .userName {
+    position: absolute;
+    margin-left: 16px; 
+    margin-top: 26px; 
+  }
+  .doLike {
+    border: 1px solid red;
+    display: flex;
   }
 </style>
 

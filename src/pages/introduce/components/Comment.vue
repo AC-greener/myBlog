@@ -72,17 +72,23 @@ export default {
     background-color: white;
   }
   input, textarea {
+    padding: 10px;
     border: solid 2px #dbbfc3;
     border-radius: 10px;
   }
   input:focus, textarea:focus {
-    border: solid 2px blue;
+    outline: none;
+    border: solid 2px #c87b86;
     border-radius: 10px;
   }
  .fromWrap button {
    border-radius: 10px;
    border: solid 2px #a55f67;
    background-color: #a55f67;
+   opacity: .8;
+ }
+ .fromWrap button:hover {
+   opacity: 1;
  }
  input, button {
    height: 40px;

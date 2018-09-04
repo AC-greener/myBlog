@@ -61,6 +61,9 @@ export default {
       font-family: "merriweather",SimSun,"宋体",serif;
       text-shadow: 0 2px 5px rgba(0,0,0,0.2);
   }
+  /* .router-link-active {
+    color: red ;
+  } */
   .img {
     clip-path: circle(50%);
     width: 76px;
