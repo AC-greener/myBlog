@@ -7,16 +7,16 @@
     </div>
     <div class="comment">
       <div class="fromWrap">
-        <form action="" class="form">
+        <form action="http://localhost:3000/messageBoard" class="form" method="GET">
           <div style="margin-bottom:30px">
-            <input style="width:25%" type="text" placeholder="您的大名">
-            <input style="width:25%"  type="email" placeholder="邮箱">
+            <input style="width:25%" type="text" placeholder="您的大名" name="userName" required>
+            <input style="width:25%"  type="email" placeholder="邮箱" name="email">
           </div>
           <div style="margin-bottom:30px">
-            <textarea style="width:50%" name="" id="" cols="30" rows="10" placeholder="留言内容"></textarea>
+            <textarea style="width:50%" id="" cols="30" rows="10" placeholder="留言内容" name="content" required></textarea>
           </div>
           <div style="margin-bottom:30px; ">
-            <button style="width:25%">提交留言</button>
+            <button style="width:25%" type="submit">提交留言</button>
           </div>
         </form>
       </div>
