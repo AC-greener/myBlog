@@ -3,10 +3,9 @@
     <blog-header />
     <article style="width:100%">
       <div class="articleList">
-        <div class="article" v-for="(item, index) in articleList" :key="index">
+        <div class="article" v-for="(item, index) in this.$store.state.articleList" :key="index">
           <router-link :to='"/blog/article/" + item._id' class="more">more</router-link>
           <div class="imgWrapper">
-            <!-- <img src="http://lorempixel.com/150/150/fashion/" alt=""> -->
           </div>
           <div class="articleDetail">
             <div class="acticleName"><h1>{{item.name}}</h1></div>
@@ -30,7 +29,6 @@ export default {
   },
   data() {
     return {
-      articleList:[]  
     }
   },
   methods: {
@@ -42,8 +40,10 @@ export default {
           })
     },
     getArticleListSucc(res) {
-      console.log(res)
-      this.articleList = res.data
+      // console.log(res)
+      // console.log(this.$store.state)
+      let data = res.data;
+      this.$store.commit('changeArticleList', data)
     }
   },
   mounted() {
