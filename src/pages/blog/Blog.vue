@@ -3,30 +3,51 @@
     <blog-header />
     <article style="width:100%">
       <div class="articleList">
-        <div class="article" >
-          <router-link to="/blog/detail" class="more">more</router-link>
+        <div class="article" v-for="(item, index) in articleList" :key="index">
+          <router-link :to='"/blog/article/" + item._id' class="more">more</router-link>
           <div class="imgWrapper">
             <!-- <img src="http://lorempixel.com/150/150/fashion/" alt=""> -->
           </div>
           <div class="articleDetail">
-            <div class="acticleName"><h1>爱仕达大所大多撒多</h1></div>
+            <div class="acticleName"><h1>{{item.name}}</h1></div>
             <hr class="hr">
-            <div class="acticleTitle"> <p>Lorem ipsum dolor sit amet, consectetur adipisicing el
-              it. Amet ducimus totam quasi nam porro sed.</p> </div>
+            <div class="acticleTitle"> <p>{{item.title}}</p> </div>
           </div>
         </div>
-
+     
       </div>
     </article>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 import BlogHeader from '@/pages/blog/components/Header'
 export default {
   name: 'Blog',
   components: {
     BlogHeader: BlogHeader
+  },
+  data() {
+    return {
+      articleList:[]  
+    }
+  },
+  methods: {
+    getArticleList() {
+      axios.get('http://localhost:3000/getArticleList')
+          .then(this.getArticleListSucc)
+          .catch(function(err) {
+            console.log(err);
+          })
+    },
+    getArticleListSucc(res) {
+      console.log(res)
+      this.articleList = res.data
+    }
+  },
+  mounted() {
+    this.getArticleList()
   }
 }
 </script>
@@ -76,6 +97,7 @@ export default {
   .hr {
     background-color: $color;
     width: 88%;
+    height: 3px;
     margin: 0 auto;
     margin-left: 60px;
   }

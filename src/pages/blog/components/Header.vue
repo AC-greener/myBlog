@@ -21,6 +21,13 @@ export default {
 
 <style lang='scss'>
   $color: #428bca;
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+  .category a:hover {
+    color: #ccc;
+  }
   .blogWrapper .header {
     padding: 30px;
     border: 1px solid red;

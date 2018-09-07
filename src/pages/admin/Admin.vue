@@ -20,7 +20,7 @@
     </el-aside>
     <el-container>
       <el-main>
-        <router-view/>
+        <router-view  />
       </el-main>
       <el-footer style="background-color:yellow">Footer</el-footer>
     </el-container>

@@ -100,7 +100,21 @@
 
 <script>
 export default {
-  name: "BlogDetail"
+  name: "BlogDetail",
+  data() {
+    return {
+      article: {}
+    }
+  },
+  methods: {
+    findArticle() {
+      let id = this.$route.params.id;
+    }
+  },
+  mounted() {
+    console.log(this.$route);
+
+  }
 }
 </script>
 

@@ -4,7 +4,6 @@ var messageBoardSchema = new mongoose.Schema({
     email: String,
     content: String,
     date: String,
-   
 });
 
 //创建静态方法

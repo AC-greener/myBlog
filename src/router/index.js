@@ -54,14 +54,12 @@ export default new Router({
       path: '/blog',
       name: 'Blog', 
       component: Blog,
-   
     },
     {
-      path: '/blog/detail',
-      name: 'BlogDetail',
-      component: BlogDetail
+        path: '/blog/article/:id',
+        name: 'BlogDetail',
+        component: BlogDetail
     }
-  
   ],
   mode: 'history'
 })

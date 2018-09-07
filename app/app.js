@@ -1,8 +1,8 @@
 var express = require('express');
 var app = express();
 var messageBoardRoute = require('./routes/messageBoard');
-var messageBoardSchema = require("./orm/models/messageBoard");
 var MessageBoard = require("./orm/models/MessageBoard");
+var Article = require("./orm/models/Article");
 app.all('*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -21,6 +21,16 @@ app.get('/getCommentList', function(req, res) {
     res.send(result);
   })
 })
+
+app.get('/getArticleList', function(req, res) {
+  Article.find({}, function(err, result) {
+    if(err) {
+      console.log(err);
+    }
+    res.send(result)
+  })
+})
+
 app.listen(3000, function() {
   console.log('app listening on port 3000!');
 })
