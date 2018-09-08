@@ -22,17 +22,17 @@
             <h1><strong>评论区</strong></h1>
             <!-- <h3 style="font-size:24px"><strong>已有100人在此留言</strong></h3> -->
           </header>
-        <form class="doComment" action="" method="post">
+        <form class="doComment" action="http://localhost:3000/articleComment"  method="get">
           <div>
             <img class="img" src="@/assets/img/user.png" alt="用户头像  ">
-            <input style="margin-left:100px; margin-top:-50px; display:block" type="text" placeholder="在此输入您的大名">
+            <input style="margin-left:100px; margin-top:-50px; display:block" name="userName"  type="text" placeholder="在此输入您的大名">
           </div>
           <div>
-            <textarea name="" id=""  rows="5" style="margin-right:10%; width:100%;" placeholder="我也来说几句" ></textarea>
+            <textarea name="content" id=""  rows="5" style="margin-right:10%; width:100%;" placeholder="我也来说几句" ></textarea>
           </div>
           <div>
-            <input type="email" placeholder="Email地址">
-            <button>提交</button>
+            <input type="email" placeholder="Email地址" name="email">
+            <button type="button">提交</button>
           </div>
         </form>
         <div class="peopleCommentWrap">
@@ -45,7 +45,6 @@
             you’re a real cool guy！
             you’re a real cool guy！
             you’re a real cool guy！
-         
           </div>
           <div class="doLike">
             <div class="like">喜欢</div>
@@ -74,7 +73,6 @@ export default {
           break;
         }
       }
-      console.log(this.article)
     }
   },
   mounted() {

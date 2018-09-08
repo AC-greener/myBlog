@@ -13,7 +13,6 @@
             <div class="acticleTitle"> <p>{{item.title}}</p> </div>
           </div>
         </div>
-     
       </div>
     </article>
   </div>
@@ -40,8 +39,7 @@ export default {
           })
     },
     getArticleListSucc(res) {
-      // console.log(res)
-      // console.log(this.$store.state)
+      console.log(res.data)
       let data = res.data;
       this.$store.commit('changeArticleList', data)
     }

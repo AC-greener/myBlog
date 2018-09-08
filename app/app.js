@@ -3,6 +3,7 @@ var app = express();
 var messageBoardRoute = require('./routes/messageBoard');
 var MessageBoard = require("./orm/models/MessageBoard");
 var Article = require("./orm/models/Article");
+
 app.all('*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -29,6 +30,12 @@ app.get('/getArticleList', function(req, res) {
     }
     res.send(result)
   })
+})
+
+app.get('/articleComment', function(req, res) { 
+  console.log(req.query)
+  console.log(req.url)
+  res.send('hello')
 })
 
 app.listen(3000, function() {
