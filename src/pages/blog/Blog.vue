@@ -8,9 +8,9 @@
           <div class="imgWrapper">
           </div>
           <div class="articleDetail">
-            <div class="acticleName"><h1>{{item.name}}</h1></div>
+            <div class="acticleName"><h1>{{item.articleName}}</h1></div>
             <hr class="hr">
-            <div class="acticleTitle"> <p>{{item.title}}</p> </div>
+            <div class="acticleTitle"> <p>{{item.articleTitle}}</p></div>
           </div>
         </div>
       </div>

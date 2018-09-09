@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');
 var articleSchema = new mongoose.Schema({
-  name: {type: String, unique:true},
-  title: String,
-  content: String,
-  category: String,
+  articleName: {type: String, unique:true},
+  articleTitle: String,
+  articleContent: String,
+  articleCategory: String,
   createTime: String,
   readCount: Number,
   comment: {

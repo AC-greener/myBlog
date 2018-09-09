@@ -2,7 +2,7 @@
   <div class="detailBlogWrapper">
     <header>
       <h1 class="header">
-        {{article.name}}
+        {{article.articleName}}
         
       </h1>
       <div class="createTime">——By zhutongtong on 2018-08-24, 3642 人读过</div>
@@ -15,7 +15,7 @@
       </div>
     </header>
     <article class="articleContent">
-      {{article.content}}
+      {{article.articleContent}}
     </article>
         <div class="commentRight" >
           <header>
