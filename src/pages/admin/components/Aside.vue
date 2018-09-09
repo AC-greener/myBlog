@@ -1,9 +1,11 @@
 <template>
  <aside>
    <ul>
-     <li><router-link to="/admin/articleAdmin">文章管理</router-link></li>
-     <li>评论管理</li>
-     <li>分类管理</li>
+     <li><router-link to="/admin/articleAdmin">添加文章</router-link></li>
+     <li><router-link to="/admin/acticleAdminList">文章列表</router-link></li>
+     <li><router-link to="/admin/categoryAdmin">添加分类</router-link></li>
+     <li><router-link to="/admin/categoryAdminList">分类列表</router-link></li>
+     <li><router-link to="/admin/commentAdminList">评论列表</router-link></li>
    </ul>
  </aside>
 </template>
@@ -13,19 +15,7 @@ export default {
   name: 'AdminAside',
   data () {
     return {
-      list: [{
-        iconClass: 'el-icon-edit',
-        path: '/admin/articleAdmin',
-        content: '文章管理'
-      },{
-        iconClass: 'el-icon-tickets',
-        path: '/admin/categoryAdmin',
-        content: '分类管理'
-      },{
-        iconClass: 'el-icon-message',
-        path: '/admin/commentAdmin',
-        content: '评论管理'
-      }]
+
     }
   }
 }
@@ -36,8 +26,8 @@ a {
   text-decoration-line: none;
 }
 aside {
-  width: 200px;
-  min-height: 600px;
+  width: 120px;
+  height: 800px;
   background-color: bisque;
 }
 </style>

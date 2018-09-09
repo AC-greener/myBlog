@@ -1,7 +1,7 @@
 <template>
-   <div>
-      <admin-aside/>
-      <router-view  />
+   <div class="container">
+      <admin-aside />
+      <router-view />
    </div>
 </template>
 
@@ -14,16 +14,19 @@ export default {
     AdminHeader,
     AdminAside
   },
-    data() {
-      return {
-        
-      }
+  data() {
+    return {
+      
     }
+  }
 }
 </script>
 
 <style scoped>
- 
+  .container {
+    display: flex;
+    
+  }
 </style>
 
 

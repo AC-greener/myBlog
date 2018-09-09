@@ -9,9 +9,11 @@ import BlogDetail from '@/pages/blog/components/Detail'
 
 
 import Admin from '@/pages/admin/Admin'
-import AdminArticle from '@/pages/admin/components/Article'
-import AdminCategory from '@/pages/admin/components/Category'
-import AdminComment from '@/pages/admin/components/Comment'
+import ArticleAdmin from '@/pages/admin/components/Article'
+import ArticleAdminList from '@/pages/admin/components/ArticleList'
+import CategoryAdmin from '@/pages/admin/components/Category'
+import CategoryAdminList from '@/pages/admin/components/CategoryList'
+import CommentAdminList from '@/pages/admin/components/CommentList'
 
 
 Vue.use(Router)
@@ -30,18 +32,28 @@ export default new Router({
       children: [
         {
           path: 'articleAdmin',
-          name: 'AdminArticle',
-          component: AdminArticle
+          name: 'ArticleAdmin',
+          component: ArticleAdmin
         },
         {
-          path: 'commentAdmin',
-          name: 'AdminComment',
-          component: AdminComment
+          path: 'acticleAdminList',
+          name: 'ArticleAdminList',
+          component: ArticleAdminList
+        },
+        {
+          path: 'commentAdminList',
+          name: 'CommentAdminList',
+          component: CommentAdminList
         },
         {
           path: 'categoryAdmin',
-          name: 'AdminCategory',
-          component: AdminCategory
+          name: 'CategoryAdmin',
+          component: CategoryAdmin
+        },
+        {
+          path: 'categoryAdminList',
+          name: 'CategoryAdminList',
+          component: CategoryAdminList
         }
       ]
     }, 

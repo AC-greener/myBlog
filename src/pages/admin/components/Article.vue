@@ -14,7 +14,7 @@
         内容：<textarea name="articleContent" id="" cols="30" rows="10"></textarea>
       </div>
       <div>
-        <input type="button" value='提交' @click="handleButtonClick">
+        <input type="button" value='提交' @click="handleButtonClick" >
       </div>
     </form>
   </div>
@@ -35,12 +35,14 @@ export default {
       let data = {
         'articleName': '',
         'articleTitle': '',
+        'articleCategory': '',
         'articleContent': '',
         'createTime': ''
       }
       data.articleName  = formElement['articleName'].value;
       data.articleTitle  = formElement['articleTitle'].value;
       data.articleContent  = formElement['articleContent'].value;
+      data.articleCategory  = formElement['articleCategory'].value;
       data.createTime = new Date().toLocaleString();
       this.postArticleData(data);
     },

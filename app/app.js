@@ -1,9 +1,14 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser')
+
 var messageBoardRoute = require('./routes/messageBoard');
+
+//引入数据库实体
 var MessageBoard = require("./orm/models/MessageBoard");
 var Article = require("./orm/models/Article");
+var ArticleComment = require('./orm/models/ArticleComment');
+
 
 //解析post请求体重的内容
 app.use(bodyParser.urlencoded({extended: false}));
@@ -38,10 +43,25 @@ app.get('/getArticleList', function(req, res) {
   })
 })
 
+app.post('/articleComment', function(req, res) { 
+  let articleComment = new ArticleComment(req.body);
+  articleComment.save(function(err, res) {
+    if(err) {
+      console.log(err)
+    } else {
+      console.log(res)
+    }
+  })
+  res.send('ok')
+})
+
 app.get('/articleComment', function(req, res) { 
-  console.log(req.query)
-  console.log(req.url)
-  res.send('hello')
+  ArticleComment.find({}, function(err, result) {
+    if(err) {
+      console.log(err);
+    }
+    res.send(result)
+  })
 })
 
 app.post('/addArticle', function(req, res) {
@@ -54,7 +74,7 @@ app.post('/addArticle', function(req, res) {
       console.log(res)
     }
   })
-  res.send('hello')
+  res.send('ok')
 })
 
 

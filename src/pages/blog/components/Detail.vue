@@ -22,7 +22,7 @@
             <h1><strong>评论区</strong></h1>
             <!-- <h3 style="font-size:24px"><strong>已有100人在此留言</strong></h3> -->
           </header>
-        <form class="doComment" action="http://localhost:3000/articleComment"  method="get">
+        <form class="doComment" ref="form">
           <div>
             <img class="img" src="@/assets/img/user.png" alt="用户头像  ">
             <input style="margin-left:100px; margin-top:-50px; display:block" name="userName"  type="text" placeholder="在此输入您的大名">
@@ -32,19 +32,16 @@
           </div>
           <div>
             <input type="email" placeholder="Email地址" name="email">
-            <button type="button">提交</button>
+            <button type="button" @click="handleButtonClick">提交</button>
           </div>
         </form>
-        <div class="peopleCommentWrap">
+        <div class="peopleCommentWrap" v-for="(item, index) in commentList" :key="index">
           <div>
             <img class="img" src="@/assets/img/user.png" alt="用户头像  ">
-            <span class="userName">张三</span>
+            <span class="userName">{{item.userName}}</span>
           </div>
           <div class="peopleComment">
-            you’re a real cool guy！
-            you’re a real cool guy！
-            you’re a real cool guy！
-            you’re a real cool guy！
+            {{item.content}}
           </div>
           <div class="doLike">
             <div class="like">喜欢</div>
@@ -56,11 +53,13 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: "BlogDetail",
   data() {
     return {
-      article: {}
+      article: {},
+      commentList: []
     }
   },
   methods: {
@@ -70,13 +69,57 @@ export default {
       for(let i = 0; i < articleList.length; i++) {
         if(articleList[i]._id === id) {
           this.article = articleList[i];
+          console.log(this.article)
           break;
         }
       }
+    },
+    handleButtonClick() {
+      let formElement = this.$refs.form
+      let data = {
+        'userName': '',
+        'email': '',
+        'content': '',
+        'createTime': '',
+        'id': ''
+      }
+      data.userName = formElement.elements['userName'].value
+      data.email = formElement.elements['email'].value
+      data.content = formElement.elements['content'].value
+      data.id = this.article._id
+      data.createTime = new Date().toLocaleString()
+      console.log(data)
+      this.postCommentData(data)
+    },
+    postCommentData(data) {
+      axios.post('http://localhost:3000/articleComment', data)
+        .then(function(response) {
+          console.log(response);
+        })
+        .catch(function(error) {
+          console.log(err);
+        })
+    },
+    getCommentList() {
+      axios.get('http://localhost:3000/articleComment')
+        .then(this.getCommentListSucc)
+        .catch(function(error) {
+          console.log(error)
+        })
+    },
+    getCommentListSucc(res) {
+      let data = res.data;
+      this.commentList = data.filter(this.filterCommentList);
+      console.log("thisArticleCommentList",this.commentList);
+    },
+    filterCommentList(item) {
+      let thisArticleId = this.article._id;
+      return item.id == thisArticleId
     }
   },
   mounted() {
     this.findArticle()
+    this.getCommentList()
   }
 }
 </script>
