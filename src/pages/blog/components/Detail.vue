@@ -5,7 +5,7 @@
         {{article.articleName}}
         
       </h1>
-      <div class="createTime">——By zhutongtong on 2018-08-24, 3642 人读过</div>
+      <div class="createTime">——By zhutongtong on 2018-08-24, {{this.pv}} 人读过</div>
       <div class="category">
         <div><router-link to="/" title="首页"><i class="iconfont-sm">&#xe61b;</i></router-link></div>
         <div><router-link to="/blog" title="我的博客"><i class="iconfont-sm">&#xe61c;</i></router-link></div>
@@ -59,7 +59,8 @@ export default {
   data() {
     return {
       article: {},
-      commentList: []
+      commentList: [],
+      pv: 0
     }
   },
   methods: {
@@ -97,7 +98,7 @@ export default {
           console.log(response);
         })
         .catch(function(error) {
-          console.log(err);
+          console.log(error);
         })
     },
     getCommentList() {
@@ -115,10 +116,22 @@ export default {
     filterCommentList(item) {
       let thisArticleId = this.article._id;
       return item.id == thisArticleId
+    },
+    updateArticlePv(data) {
+      let that = this
+      axios.post('http://localhost:3000/updateArticlePV', data)
+        .then(function(response) {
+          that.pv = response.data.pv
+          // console.log(response.data.pv)
+        })
+        .catch(function(err) {
+          console.log(err)
+        })
     }
   },
   mounted() {
     this.findArticle()
+    this.updateArticlePv({_id: this.article._id})
     this.getCommentList()
   }
 }
@@ -127,7 +140,6 @@ export default {
 <style lang='scss'>
 
  $color: #428bca;
-  
   .category a {
     color: #fff; 
     text-decoration: none;

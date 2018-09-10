@@ -6,6 +6,7 @@ var articleSchema = new mongoose.Schema({
   articleCategory: String,
   createTime: String,
   readCount: Number,
+  pv: {type: Number, default: 0}
  
 })
 

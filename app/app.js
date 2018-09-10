@@ -8,7 +8,7 @@ var messageBoardRoute = require('./routes/messageBoard');
 var MessageBoard = require("./orm/models/MessageBoard");
 var Article = require("./orm/models/Article");
 var ArticleComment = require('./orm/models/ArticleComment');
-
+var Pv = require('./orm/models/Pv');
 
 //解析post请求体重的内容
 app.use(bodyParser.urlencoded({extended: false}));
@@ -77,8 +77,41 @@ app.post('/addArticle', function(req, res) {
   res.send('ok')
 })
 
+app.post('/updateArticlePV', function(req, res) {
+  Article.findById(req.body._id, function(err) {
+    if(err) {
+      console.log(err)
+    }
+  }).then(function(result) {
+    console.log(result)
+    Article.findByIdAndUpdate(req.body._id, {$set: {pv: result.pv+1}}, function(err, article) {
+      if(err) {
+        console.log(err)
+      } else {
+        console.log(article)
+        res.send(article)
 
+      } 
+    })
+  })
+})
 
+app.post('/updatePV', function(req, res) {
+  Pv.findById("5b8fd211ce6e2b20bc238e1f", function(err) {
+    if(err) {
+      console.log(err)
+    }
+  }).then(function(result) {
+    Pv.findByIdAndUpdate("5b8fd211ce6e2b20bc238e1f", {$set: {pv: result.pv+1}}, function(err, article) {
+      if(err) {
+        console.log(err)
+      } else {
+        console.log(article)
+        res.send(article)
+      } 
+    })
+  })
+})
 
 app.listen(3000, function() {
   console.log('app listening on port 3000!');
