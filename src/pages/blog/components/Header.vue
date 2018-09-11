@@ -30,7 +30,6 @@ export default {
   }
   .blogWrapper .header {
     padding: 30px;
-    border: 1px solid red;
     color: $color;
     text-align: center;
     font-size: 62px;

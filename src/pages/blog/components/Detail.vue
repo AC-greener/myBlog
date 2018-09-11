@@ -1,26 +1,26 @@
 <template>
   <div class="detailBlogWrapper">
     <header>
-      <h1 class="header">
-        {{article.articleName}}
-        
-      </h1>
-      <div class="createTime">——By zhutongtong on 2018-08-24, {{this.pv}} 人读过</div>
-      <div class="category">
+         <div class="category">
         <div><router-link to="/" title="首页"><i class="iconfont-sm">&#xe61b;</i></router-link></div>
         <div><router-link to="/blog" title="我的博客"><i class="iconfont-sm">&#xe61c;</i></router-link></div>
         <div><router-link to="/comment" title="留言板"><i class="iconfont-sm">&#xe744;</i></router-link></div>
         <div><a href="https://codepen.io/ac-greener/" title="codepen"><i class="iconfont-sm">&#xe65b;</i></a></div>
         <div><a href="https://github.com/AC-greener" title="github"><i class="iconfont-sm">&#xe6a4;</i></a></div>
       </div>
+      <h1 class="header">
+        {{article.articleName}}
+
+      </h1>
+      <div class="createTime">时间 {{article.createTime.replace('/', '.').replace('/', '.')}}&nbsp;&nbsp;阅读 {{this.pv}}&nbsp;&nbsp;评论 {{commentList.length}}&nbsp;&nbsp;喜欢 12</div>
+   
     </header>
-    <article class="articleContent">
-      {{article.articleContent}}
-    </article>
+      
+    <article class="articleContent" v-html="article.articleContent">
+    </article>  
         <div class="commentRight" >
           <header>
             <h1><strong>评论区</strong></h1>
-            <!-- <h3 style="font-size:24px"><strong>已有100人在此留言</strong></h3> -->
           </header>
         <form class="doComment" ref="form">
           <div>
@@ -44,8 +44,8 @@
             {{item.content}}
           </div>
           <div class="doLike">
-            <div class="like">喜欢</div>
-            <div class="dislike" style="margin-left:50px">不喜欢</div>
+            <span class="like">喜欢</span>
+            <span class="dislike" style="margin-left:50px">不喜欢</span>
           </div>
         </div> 
     </div> 
@@ -171,13 +171,14 @@ export default {
     margin: 14px;
   }
   .createTime {
-    padding-left: 100px;
-    font-size: 22px;
+    // border: 1px solid red;
+    text-align: center;
+    font-size: 15px;
     font-family: "Pacifico";
-    color: #333;
+    color: #333333a8;
   }
   .articleContent {
-    width: 60%;
+    width: 50%;
     line-height: 25px;
     word-spacing: 5px;
     background: #bbccee9c;
@@ -198,11 +199,11 @@ export default {
     height: 76px;
   }
   .commentRight {
+    border: 1px solid red;
     width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 1800px;
     background-color: #BCD;
 
   }
@@ -213,7 +214,7 @@ export default {
     flex-direction: column;
     background-color: white;
     margin: 20px;
-    padding-bottom: 25px;
+    padding-bottom: 18px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
   }
   .doComment div {
@@ -241,10 +242,8 @@ export default {
     background-color: white;
     margin: 30px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-    padding-bottom: 20px;
   }
   .peopleCommentWrap div {
-    margin: 10px;
     margin-left: 40px;
   }
   .userName {
@@ -253,8 +252,8 @@ export default {
     margin-top: 26px; 
   }
   .doLike {
-    border: 1px solid red;
-    display: flex;
+    margin-bottom: 10px;
+    margin: 10px;
   }
 </style>
 

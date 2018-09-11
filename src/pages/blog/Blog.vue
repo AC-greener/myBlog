@@ -3,7 +3,7 @@
     <blog-header />
     <article style="width:100%">
       <div class="articleList">
-        <div class="article" v-for="(item, index) in this.$store.state.articleList" :key="index">
+        <div class="article" v-for="(item, index) in articleList" :key="index">
           <router-link :to='"/blog/article/" + item._id' class="more">more</router-link>
           <div class="imgWrapper">
           </div>
@@ -15,6 +15,10 @@
         </div>
       </div>
     </article>
+    <div class="pagination">
+      <span class="prev">上一页</span>
+      <span class="next" @click="handleNextClick">下一页</span>
+    </div>
   </div>
 </template>
 
@@ -28,6 +32,9 @@ export default {
   },
   data() {
     return {
+      articleList: [],
+      page: 1,
+      totalPage: 1,
     }
   },
   methods: {
@@ -42,10 +49,35 @@ export default {
       console.log(res.data)
       let data = res.data;
       this.$store.commit('changeArticleList', data)
+    },
+    getPageInfo() {
+      let list = this.$store.state.articleList
+      this.totalPage = Math.ceil(list.length/2)
+      console.log(this.totalPage)
+      for(let i = (this.page-1)*2; i < this.page*2; i++) {
+          if(list[i]) {
+            this.articleList.push(list[i])
+          }
+        }
+        this.page++;
+    },
+    handleNextClick() {
+      if(this.page <= this.totalPage) {
+        console.log(this.$route.state.articleList)
+        for(let i = (this.page-1)*2; i < this.page*2; i++) {
+          // if(this.$route.state.articleList[i]) {
+          //   this.articleList.push(this.$route.state.articleList[i])
+          // }
+        }
+        this.page++;
+      } else {
+        this.page = 1;
+      }
     }
   },
   mounted() {
     this.getArticleList()
+    this.getPageInfo()
   }
 }
 </script>
@@ -55,7 +87,6 @@ export default {
  
   .blogWrapper {
     width: 100%;
-    height: 800px;
     background-color: #CDE;
     display: flex;
     flex-direction: column;
@@ -141,5 +172,8 @@ export default {
   }
   .imgWrapper img {
     clip-path: circle(50%);
+  }
+  .pagination {
+    height: 300px;
   }
 </style>
