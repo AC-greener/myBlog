@@ -17,6 +17,7 @@
     </header>
       
     <article class="articleContent" v-html="article.articleContent">
+     
     </article>  
         <div class="commentRight" >
           <header>
@@ -64,13 +65,18 @@ export default {
     }
   },
   methods: {
+    domParser(data) {
+      let parser = new DOMParser();
+      this.article.articleContent = parser.parseFromString(data, "application/xml")
+    },
     findArticle() {
       let id = this.$route.params.id;
       let articleList = this.$store.state.articleList;
       for(let i = 0; i < articleList.length; i++) {
         if(articleList[i]._id === id) {
           this.article = articleList[i];
-          console.log(this.article)
+          // this.article.articleContent.toString()
+          // this.domParser(this.article.articleContent)
           break;
         }
       }
@@ -151,7 +157,6 @@ export default {
   .detailBlogWrapper {
     background-color: #BCD;
     width: 100%;
-    height: 1800px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -178,7 +183,8 @@ export default {
     color: #333333a8;
   }
   .articleContent {
-    width: 50%;
+    padding: 20px;
+    width: 54%;
     line-height: 25px;
     word-spacing: 5px;
     background: #bbccee9c;
@@ -205,7 +211,7 @@ export default {
     flex-direction: column;
     align-items: center;
     background-color: #BCD;
-
+    margin-bottom: 30px;
   }
   .doComment {
     width: 80%;

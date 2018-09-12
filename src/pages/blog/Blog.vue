@@ -16,8 +16,9 @@
       </div>
     </article>
     <div class="pagination">
-      <span class="prev">上一页</span>
-      <span class="next" @click="handleNextClick">下一页</span>
+      <span class="prev" @click="changePageListPrev" v-show="page!=1">上一页</span>
+      <span style="color:rgba(124, 122, 122, 0.8);">{{this.page}} / {{this.totalPage}}</span>
+      <span class="next" @click="changePageListNext" v-show="page!=totalPage" >下一页</span>
     </div>
   </div>
 </template>
@@ -35,49 +36,55 @@ export default {
       articleList: [],
       page: 1,
       totalPage: 1,
+      list:[]
     }
   },
   methods: {
     getArticleList() {
       axios.get('http://localhost:3000/getArticleList')
           .then(this.getArticleListSucc)
-          .catch(function(err) {
-            console.log(err);
-          })
+          .then(this.initPageList)
     },
     getArticleListSucc(res) {
-      console.log(res.data)
       let data = res.data;
+      console.log(data)
+      this.list = data
+      this.totalPage = Math.ceil(data.length/2)
       this.$store.commit('changeArticleList', data)
     },
-    getPageInfo() {
-      let list = this.$store.state.articleList
-      this.totalPage = Math.ceil(list.length/2)
-      console.log(this.totalPage)
-      for(let i = (this.page-1)*2; i < this.page*2; i++) {
-          if(list[i]) {
-            this.articleList.push(list[i])
+    changePageListNext() {
+      if(this.page < this.totalPage) {
+        this.page++;
+        this.articleList = []
+        for(let i = (this.page-1)*2; i < this.page*2; i++) {
+          if(this.list[i]) {
+            this.articleList.push(this.list[i])
           }
         }
-        this.page++;
-    },
-    handleNextClick() {
-      if(this.page <= this.totalPage) {
-        console.log(this.$route.state.articleList)
-        for(let i = (this.page-1)*2; i < this.page*2; i++) {
-          // if(this.$route.state.articleList[i]) {
-          //   this.articleList.push(this.$route.state.articleList[i])
-          // }
-        }
-        this.page++;
-      } else {
-        this.page = 1;
       }
+    },
+    changePageListPrev() {
+      if(this.page > 1) {
+        this.page--;
+        this.articleList = []
+        for(let i = (this.page-1)*2; i < this.page*2; i++) {
+          if(this.list[i]) {
+            this.articleList.push(this.list[i])
+          }
+        }
+      }
+    },
+    initPageList() {
+      for(let i = (this.page-1)*2; i < this.page*2; i++) {
+          if(this.list[i]) {
+            this.articleList.push(this.list[i])
+          }
+        }
     }
+
   },
   mounted() {
     this.getArticleList()
-    this.getPageInfo()
   }
 }
 </script>
@@ -174,6 +181,10 @@ export default {
     clip-path: circle(50%);
   }
   .pagination {
+    font-family: "Pacifico";
     height: 300px;
+  }
+  .pagination .prev {
+    transition: all 2;
   }
 </style>
