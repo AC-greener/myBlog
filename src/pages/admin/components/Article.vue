@@ -1,19 +1,19 @@
 <template>
-  <div style="height:500px; padding:10px">
+  <div class="formWrapper">
     <form ref="form">
       <div>
-        Name：<input type="text" name="articleName">
+       <label for="articleName" >名称：</label><input type="text" name="articleName" id="articleName">
       </div>
       <div>
-        摘要：<input type="text" name="articleTitle">
+        <label for="articleTitle" >摘要：</label><input type="text" name="articleTitle" id="articleTitle">
       </div>
       <div>
-        文章分类：<input type="text" name="articleCategory">
+        <label for="articleCategory">分类：</label><input type="text" name="articleCategory" id="articleCategory">
       </div>
       <div>
-        内容：<textarea name="articleContent" id="" cols="30" rows="10"></textarea>
+       <label for="articleContent" style="position:absolute">内容：</label> <textarea style="margin-left:126px;" name="articleContent"  cols="30" rows="20" id="articleContent"></textarea>
       </div>
-      <div>
+      <div style="margin-left:-20px;">
         <input type="button" value='提交' @click="handleButtonClick" >
       </div>
     </form>
@@ -59,5 +59,43 @@ export default {
 }
 </script>
 <style scoped>
- 
+ .formWrapper {
+   width: 100%;
+   height: 800px;
+   padding: 50px;
+ }
+  .formWrapper div {
+    margin: 20px;
+  }
+ input[type=text] {
+   width: 20%;
+   height: 40px;
+   padding: 5px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   outline: none;
+ }
+ textarea {
+   width: 60%;
+   border-radius: 5px;
+   outline: none;
+ }
+ form input:nth-child(1) {
+   margin-left: 40px;
+ }
+ form input:nth-child(2) {
+   margin-left: 80px;
+ }
+ input[type=button] {
+   border: none;
+   border-radius: 4px;
+   border: 1px solid #ccc;
+   background-color: #2196f3a1;
+   width: 120px;
+   height: 40px;
+   outline: none;
+ }
+ input[type=button]:hover {
+   background-color: #2196f3f7;
+ }
 </style>

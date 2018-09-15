@@ -50,9 +50,20 @@
 <style scoped>
   .container {
     width: 100%;
+    margin-top: 5px;
+
   }
   .table {
-    width: 100%;
-    border: 1px solid red;
+    width: 100%;;
+    border-radius: 15px;
+    margin-left: 10px;
+    padding: 10px;
+  }
+  .table tr {
+    border: 1px solid black;
+    height: 40px;
+  }
+  td {
+    padding: 10px;
   }
 </style>

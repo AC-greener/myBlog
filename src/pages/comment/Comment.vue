@@ -160,7 +160,6 @@ export default {
     margin-left: 40px;
   }
   .userName {
-
     position: absolute;
     margin-left: 16px; 
     margin-top: 26px; 
@@ -169,7 +168,6 @@ export default {
     position: absolute;
     font-size: 12px;
     color: #969696;
-    /* border: 1px solid red; */
     margin-left: 16px;
     margin-top: 52px;
   }

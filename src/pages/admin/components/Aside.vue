@@ -23,11 +23,22 @@ export default {
 
 <style scoped>
 a {
+  display: block;
+  color: black;
   text-decoration-line: none;
 }
+a:hover {
+  text-decoration-line: underline;
+}
 aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 120px;
   height: 800px;
-  background-color: bisque;
+  background-color: #a7a199;
+}
+aside a {
+  margin-top: 20px;
 }
 </style>
