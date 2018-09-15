@@ -14,7 +14,7 @@ import ArticleAdminList from '@/pages/admin/components/ArticleList'
 import CategoryAdmin from '@/pages/admin/components/Category'
 import CategoryAdminList from '@/pages/admin/components/CategoryList'
 import CommentAdminList from '@/pages/admin/components/CommentList'
-
+import AdminLogin from '@/pages/admin/login/Login'
 
 Vue.use(Router)
 
@@ -56,6 +56,11 @@ export default new Router({
           component: CategoryAdminList
         }
       ]
+    },
+    {
+      path: '/login',
+      name: 'AdminLogin',
+      component: AdminLogin,
     }, 
     {
       path: '/comment',
