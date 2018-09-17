@@ -11,19 +11,19 @@
         <div><a href="https://codepen.io/ac-greener/" target="_blank" title="codepen"><i class="iconfont-sm">&#xe65b;</i></a></div>
         <div><a href="https://github.com/AC-greener" target="_blank" title="github"><i class="iconfont-sm">&#xe6a4;</i></a></div>
       </div> -->
-      <nav>
-    <div class="btn-menu" id="btnMenu" @click="Menu">
-      <span class="icon_open">&equiv;</span>
-      <span class="icon_close">&times;</span>
-    </div>
-    <ul class="hide" id="PopUp">
-      <li><router-link to="/" ><i class="iconfont-sm">&#xe61b;</i><span class="title">Home</span></router-link></li>
-      <li><router-link to="/blog" ><i class="iconfont-sm">&#xe61c;</i><span class="title">My Blog</span></router-link></li>
-      <li><router-link to="/comment" ><i class="iconfont-sm">&#xe744;</i><span class="title">Comment</span></router-link></li>
-      <li><a href="https://codepen.io/ac-greener/" target="_blank"><i class="iconfont-sm">&#xe65b;</i><span class="title">Codepen</span></a></li>
-      <li><a href="https://github.com/AC-greener" target="_blank" ><i class="iconfont-sm">&#xe6a4;</i><span class="title">Github</span></a></li>
-    </ul>
-  </nav>
+				<nav>
+					<div class="btn-menu" id="btnMenu" @click="Menu">
+						<span class="icon_open">&equiv;</span>
+						<span class="icon_close">&times;</span>
+					</div>
+					<ul class="hide" id="PopUp">
+						<li><router-link to="/" ><i class="iconfont-sm">&#xe61b;</i><span class="title">Home</span></router-link></li>
+						<li><router-link to="/blog" ><i class="iconfont-sm">&#xe61c;</i><span class="title">My Blog</span></router-link></li>
+						<li><router-link to="/comment" ><i class="iconfont-sm">&#xe744;</i><span class="title">Comment</span></router-link></li>
+						<li><a href="https://codepen.io/ac-greener/" target="_blank"><i class="iconfont-sm">&#xe65b;</i><span class="title">Codepen</span></a></li>
+						<li><a href="https://github.com/AC-greener" target="_blank" ><i class="iconfont-sm">&#xe6a4;</i><span class="title">Github</span></a></li>
+					</ul>	
+  			</nav>
       <div class="introduceMe" v-show="isShow">
         <h2>我是朱通通 </h2>
         <h3>陕西科技大学大三学生一枚~</h3>

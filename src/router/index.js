@@ -1,21 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Introduce from '@/pages/introduce/Introduce'
-import Comment from '@/pages/comment/Comment'
-
-import Blog from '@/pages/blog/Blog'
-import BlogDetail from '@/pages/blog/components/Detail'
-
-
-import Admin from '@/pages/admin/Admin'
-import ArticleAdmin from '@/pages/admin/components/Article'
-import ArticleAdminList from '@/pages/admin/components/ArticleList'
-import CategoryAdmin from '@/pages/admin/components/Category'
-import CategoryAdminList from '@/pages/admin/components/CategoryList'
-import CommentAdminList from '@/pages/admin/components/CommentList'
-import AdminLogin from '@/pages/admin/login/Login'
-
 Vue.use(Router)
 
 export default new Router({
@@ -23,59 +8,59 @@ export default new Router({
     {
       path: '/',
       name: 'Introduce',
-      component: Introduce
+      component: () => import ('@/pages/introduce/Introduce'),
     },
     {
       path: '/admin',
       name: 'Admin',
-      component: Admin,
+      component: () => import ('@/pages/admin/Admin'),
       children: [
         {
           path: 'articleAdmin',
           name: 'ArticleAdmin',
-          component: ArticleAdmin
+          component: () => import ('@/pages/admin/components/Article')
         },
         {
           path: 'acticleAdminList',
           name: 'ArticleAdminList',
-          component: ArticleAdminList
+          component: () => import ('@/pages/admin/components/ArticleList')
         },
         {
           path: 'commentAdminList',
           name: 'CommentAdminList',
-          component: CommentAdminList
+          component: () => import ('@/pages/admin/components/CommentList')
         },
         {
           path: 'categoryAdmin',
           name: 'CategoryAdmin',
-          component: CategoryAdmin
+          component: () => import ('@/pages/admin/components/Category')
         },
         {
           path: 'categoryAdminList',
           name: 'CategoryAdminList',
-          component: CategoryAdminList
+          component: () => import ('@/pages/admin/components/CategoryList')
         }
       ]
     },
     {
       path: '/login',
       name: 'AdminLogin',
-      component: AdminLogin,
+      component: () => import ('@/pages/admin/login/Login'),
     }, 
     {
       path: '/comment',
       name: 'Comment',
-      component: Comment
+      component: () => import ('@/pages/comment/Comment'),
     },
     {
       path: '/blog',
       name: 'Blog', 
-      component: Blog,
+      component: () => import ('@/pages/blog/Blog'),
     },
     {
         path: '/blog/article/:id',
         name: 'BlogDetail',
-        component: BlogDetail
+        component: () => import ('@/pages/blog/components/Detail'),
     }
   ],
   mode: 'history'

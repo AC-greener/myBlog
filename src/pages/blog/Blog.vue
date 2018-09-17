@@ -16,9 +16,9 @@
       </div>
     </article>
     <div class="pagination">
-      <span class="prev" @click="changePageListPrev" v-show="page!=1">上一页</span>
+      <span class="prev animated fadeInLeft" @click="changePageListPrev" v-show="page!=1">上一页</span>
       <span style="color:rgba(124, 122, 122, 0.8);">{{this.page}} / {{this.totalPage}}</span>
-      <span class="next" @click="changePageListNext" v-show="page!=totalPage" >下一页</span>
+      <span class="next animated fadeInRight" @click="changePageListNext" v-show="page!=totalPage" >下一页</span>
     </div>
   </div>
 </template>
@@ -49,14 +49,14 @@ export default {
       let data = res.data;
       console.log(data)
       this.list = data
-      this.totalPage = Math.ceil(data.length/2)
+      this.totalPage = Math.ceil(data.length/5)
       this.$store.commit('changeArticleList', data)
     },
     changePageListNext() {
       if(this.page < this.totalPage) {
         this.page++;
         this.articleList = []
-        for(let i = (this.page-1)*2; i < this.page*2; i++) {
+        for(let i = (this.page-1)*5; i < this.page*5; i++) {
           if(this.list[i]) {
             this.articleList.push(this.list[i])
           }
@@ -67,7 +67,7 @@ export default {
       if(this.page > 1) {
         this.page--;
         this.articleList = []
-        for(let i = (this.page-1)*2; i < this.page*2; i++) {
+        for(let i = (this.page-1)*5; i < this.page*5; i++) {
           if(this.list[i]) {
             this.articleList.push(this.list[i])
           }
@@ -75,7 +75,7 @@ export default {
       }
     },
     initPageList() {
-      for(let i = (this.page-1)*2; i < this.page*2; i++) {
+      for(let i = (this.page-1)*5; i < this.page*5; i++) {
           if(this.list[i]) {
             this.articleList.push(this.list[i])
           }

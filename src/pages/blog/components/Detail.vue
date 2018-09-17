@@ -8,11 +8,11 @@
         <div><a href="https://codepen.io/ac-greener/" title="codepen"><i class="iconfont-sm">&#xe65b;</i></a></div>
         <div><a href="https://github.com/AC-greener" title="github"><i class="iconfont-sm">&#xe6a4;</i></a></div>
       </div>
-      <h1 class="header">
+      <h1 class="header animated zoomIn">
         {{article.articleName}}
 
       </h1>
-      <div class="createTime">时间 {{article.createTime.replace('/', '.').replace('/', '.')}}&nbsp;&nbsp;阅读 {{this.pv}}&nbsp;&nbsp;评论 {{commentList.length}}&nbsp;&nbsp;喜欢 12</div>
+      <div class="createTime">时间 {{article.createTime.replace('/', '.').replace('/', '.')}}&nbsp;&nbsp;阅读 {{this.pv}}&nbsp;&nbsp;评论 {{commentList.length}}&nbsp;&nbsp;</div>
    
     </header>
       
@@ -146,6 +146,23 @@ export default {
 <style lang='scss'>
 
  $color: #428bca;
+ h1, h2, h3, h4, h5, h6 {
+     font-size: 20px;
+     font-weight: 800;
+}
+h1 {
+font-size: 20px;
+}
+h2 {
+font-size: 2px;
+}
+h3 {
+font-size: 23px;
+}
+h4 {
+
+font-size: 20px;
+}
   .category a {
     color: #fff; 
     text-decoration: none;
@@ -185,9 +202,12 @@ export default {
   .articleContent {
     padding: 20px;
     width: 54%;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.6);
     line-height: 25px;
     word-spacing: 5px;
-    background: #bbccee9c;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.84);
   }
  
  * {
