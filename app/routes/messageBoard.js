@@ -5,10 +5,10 @@ var router = express.Router();
 var MessageBoard = require("../orm/models/MessageBoard");
 
 
-router.get('/', function(req, res) {
-  let data = req.query;
-  data.date = new Date().toLocaleString()
+router.post('/', function(req, res) {
+  let data = req.body;
   console.log(data)
+  data.date = new Date().toLocaleString()
   MessageBoard.create({
     userName: data.userName,
     email: data.email,
@@ -18,7 +18,7 @@ router.get('/', function(req, res) {
     if(err) {
       res.send('保存失败')
     }
-    res.send('保存成功')
+    res.end()
   })
 });
 

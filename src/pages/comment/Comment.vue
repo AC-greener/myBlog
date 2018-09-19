@@ -8,7 +8,7 @@
           <h1><strong>留言板</strong></h1>
           <h3 style="font-size:24px"><strong>已有{{this.commentList.length}}人在此留言</strong></h3>
         </header>
-        <form class="doComment" action="http://localhost:3000/messageBoard" method="get">
+        <form class="doComment" action="http://localhost:3000/messageBoard" method="post" >
           <div>
             <img class="img" src="@/assets/img/user.png" alt="用户头像  ">
             <input style="margin-left:100px; margin-top:-50px; display:block" name="userName" type="text" placeholder="在此输入您的大名" required>
@@ -18,7 +18,7 @@
           </div>
           <div>
             <input type="email" placeholder="Email地址" name="email">
-            <button>提交</button>
+            <button type="submit">提交</button>
           </div>
         </form>
         <div class="peopleCommentWrap"  v-for="(item, index) in commentList" :key="index">
@@ -65,13 +65,6 @@ export default {
     getCommentListSucc(res) {
       this.commentList = res.data.reverse();
       console.log(this.commentList)
-      // var data = res.data;
-      // for(var i = 0; i < data.length; i++) {
-      //   var index = data[i].date.lastIndexOf(':');
-      //   data[i].date = data[i].date.slice(0, index).replace('T',' ');
-      // }
-      // this.commentList = data;
-      // console.log(this.commentList[this.commentList.length-1])
     }
   },
   mounted() {

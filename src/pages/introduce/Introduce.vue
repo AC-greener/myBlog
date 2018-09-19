@@ -3,12 +3,14 @@
     <introduce-header />
     <introduce-comment />
     <introduce-footer :pv='pv' />
+    <model-box @closeBox='close' v-show="showModelBox"/>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 import IntroduceHeader from '@/components/Header'
+import ModelBox from '@/components/ModelBox'
 import IntroduceComment from '@/pages/introduce/components/Comment'
 import IntroduceFooter from '@/pages/introduce/components/Footer'
 export default {
@@ -16,11 +18,13 @@ export default {
   components: {
     IntroduceHeader,
     IntroduceComment,
-    IntroduceFooter
+    IntroduceFooter,
+    ModelBox
   },
   data() {
     return {
-      pv: 0
+      pv: 0,
+      showModelBox: true
     }
   },
   methods: {
@@ -33,6 +37,9 @@ export default {
         .catch(function(err) {
           console.log(err)
         })
+    },
+    close() {
+      this.showModelBox = false
     }
   },
   mounted() {

@@ -10,7 +10,7 @@ var Article = require("./orm/models/Article");
 var ArticleComment = require('./orm/models/ArticleComment');
 var Pv = require('./orm/models/Pv');
 
-//解析post请求体重的内容
+//解析post请求体中的内容
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
@@ -88,9 +88,7 @@ app.post('/updateArticlePV', function(req, res) {
       if(err) {
         console.log(err)
       } else {
-        console.log(article)
         res.send(article)
-
       } 
     })
   })
@@ -106,7 +104,6 @@ app.post('/updatePV', function(req, res) {
       if(err) {
         console.log(err)
       } else {
-        console.log(article)
         res.send(article)
       } 
     })
