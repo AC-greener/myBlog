@@ -8,7 +8,7 @@
           <h1><strong>留言板</strong></h1>
           <h3 style="font-size:24px"><strong>已有{{this.commentList.length}}人在此留言</strong></h3>
         </header>
-        <form class="doComment" action="http://localhost:3000/messageBoard" method="post" >
+        <form class="doComment" ref="form">
           <div>
             <img class="img" src="@/assets/img/user.png" alt="用户头像  ">
             <input style="margin-left:100px; margin-top:-50px; display:block" name="userName" type="text" placeholder="在此输入您的大名" required>
@@ -18,7 +18,7 @@
           </div>
           <div>
             <input type="email" placeholder="Email地址" name="email">
-            <button type="submit">提交</button>
+            <button type="button" @click="handleFormSubmit">提交</button>
           </div>
         </form>
         <div class="peopleCommentWrap"  v-for="(item, index) in commentList" :key="index">
@@ -38,23 +38,50 @@
         </div> 
       
     </div> 
+    <model-box v-show="showModelBox" @closeBox='close'/>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 import CommentLeft from '@/components/Header'
+import ModelBox from '@/components/ModelBox'
 export default {
   name: 'Comment',
   components: {
-    CommentLeft
+    CommentLeft,
+    ModelBox
   },
   data() {
     return {
       commentList: [],
+      showModelBox: false
     }
   },
   methods: {
+    handleFormSubmit() {
+      let formElement = this.$refs.form
+      let data = {
+        'userName': '',
+        'email': '',
+        'content': '',
+      }
+      data.userName = formElement.elements['userName'].value
+      data.email = formElement.elements['email'].value
+      data.content = formElement.elements['content'].value
+      this.postCommentData(data)
+    },
+    postCommentData(data) {
+      var that = this;
+      axios.post('http://localhost:3000/messageBoard', data)
+        .then(function(response) {
+          console.log(response);
+          that.showModelBox = true
+        })
+        .catch(function(error) {
+          console.log(error);
+        })
+    },
     getCommentList() {
       axios.get('http://localhost:3000/getCommentList')
           .then(this.getCommentListSucc)
@@ -65,6 +92,9 @@ export default {
     getCommentListSucc(res) {
       this.commentList = res.data.reverse();
       console.log(this.commentList)
+    },
+    close() {
+      this.showModelBox = false
     }
   },
   mounted() {

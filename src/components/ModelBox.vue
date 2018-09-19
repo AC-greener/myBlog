@@ -1,5 +1,5 @@
 <template>
-  <div class="modelBoxWrapper">
+  <div class="modelBoxWrapper animated zoomIn">
     <div class="modelBox">
       <div style="position:absolute; top:-92px; right: 2px;cursor: pointer;" @click="$emit('closeBox')">X</div>
       <div>
@@ -33,7 +33,7 @@ export default {
   position: relative;
   line-height: 200px;
   text-align: center;
-  background-color: #a9bfd5;
+  background-color: #fff;
   width: 300px;
   height: 200px;
   border-radius: 5px;

@@ -1,7 +1,7 @@
 <template>
   <div>
     <introduce-header />
-    <introduce-comment />
+    <introduce-comment @showBox='show' />
     <introduce-footer :pv='pv' />
     <model-box @closeBox='close' v-show="showModelBox"/>
   </div>
@@ -24,7 +24,7 @@ export default {
   data() {
     return {
       pv: 0,
-      showModelBox: true
+      showModelBox: false
     }
   },
   methods: {
@@ -40,7 +40,10 @@ export default {
     },
     close() {
       this.showModelBox = false
-    }
+    },
+    show() {
+      this.showModelBox = true
+    },
   },
   mounted() {
     this.updatePv()
