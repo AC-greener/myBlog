@@ -16,9 +16,9 @@
       </div>
     </article>
     <div class="pagination">
-      <span class="prev animated fadeInLeft" @click="changePageListPrev" v-show="page!=1">上一页</span>
+      <span class="prev animated fadeInLeft" @click="changePageListPrev" v-show="page!=1"><i class="iconfont-sm" style="color: #428bca;">&#xe613;</i></span>
       <span style="color:rgba(124, 122, 122, 0.8);">{{this.page}} / {{this.totalPage}}</span>
-      <span class="next animated fadeInRight" @click="changePageListNext" v-show="page!=totalPage" >下一页</span>
+      <span class="next animated fadeInRight" @click="changePageListNext" v-show="page!=totalPage" ><i class="iconfont-sm" style="color: #428bca;">&#xe651;</i></span>
     </div>
   </div>
 </template>
@@ -107,7 +107,6 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid red;
   }
   .article {
     position: relative;
@@ -170,7 +169,6 @@ export default {
   }
   .imgWrapper {
     position: absolute;
-    // border: 1px solid red;
     border-radius: 50%;
     padding: 10px;
     background-color: #CDE;
@@ -184,7 +182,10 @@ export default {
     font-family: "Pacifico";
     height: 300px;
   }
-  .pagination .prev {
-    transition: all 2;
+  .pagination .prev:hover {
+    cursor: pointer;
+  }
+  .pagination .next:hover {
+    cursor: pointer;
   }
 </style>

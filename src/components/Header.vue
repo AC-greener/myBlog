@@ -25,7 +25,7 @@
 					</ul>	
   			</nav>
       <div class="introduceMe" v-show="isShow">
-        <h2>我是朱通通 </h2>
+        <h3>我是朱通通</h3>
         <h3>陕西科技大学大三学生一枚~</h3>
         <h3>热爱前端开发，喜欢追逐新技术</h3>
       </div>
@@ -66,7 +66,10 @@ body{
 	font-weight:400;
 	text-align:center
 	}
-
+h3 {
+	font-size: 16px;
+	font-weight: 400;
+}
 nav{
 	width:300px;
 	height:300px;

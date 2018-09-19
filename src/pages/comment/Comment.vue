@@ -11,10 +11,10 @@
         <form class="doComment" action="http://localhost:3000/messageBoard" method="get">
           <div>
             <img class="img" src="@/assets/img/user.png" alt="用户头像  ">
-            <input style="margin-left:100px; margin-top:-50px; display:block" name="userName" type="text" placeholder="在此输入您的大名">
+            <input style="margin-left:100px; margin-top:-50px; display:block" name="userName" type="text" placeholder="在此输入您的大名" required>
           </div>
           <div>
-            <textarea name="content" id=""  rows="6" style="margin-right:10%; width:100%;" placeholder="我也来说几句" ></textarea>
+            <textarea name="content" id=""  rows="6" style="margin-right:10%; width:100%;" placeholder="我也来说几句" required></textarea>
           </div>
           <div>
             <input type="email" placeholder="Email地址" name="email">
@@ -31,10 +31,10 @@
           <div class="peopleComment">
          {{item.content}}
           </div>
-          <div class="doLike">
+          <!-- <div class="doLike">
             <div class="like">喜欢</div>
             <div class="dislike" style="margin-left:50px">不喜欢</div>
-          </div>
+          </div> -->
         </div> 
       
     </div> 
@@ -172,7 +172,6 @@ export default {
     margin-top: 52px;
   }
   .doLike {
-    border: 1px solid red;
     display: flex;
   }
 </style>

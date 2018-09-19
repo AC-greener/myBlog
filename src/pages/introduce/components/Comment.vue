@@ -15,8 +15,8 @@
           <div style="margin-bottom:30px">
             <textarea style="width:50%" id="" cols="30" rows="10" placeholder="留言内容" name="content" required></textarea>
           </div>
-          <div style="margin-bottom:30px; ">
-            <button style="width:25%" type="submit">提交留言</button>
+          <div style="margin-bottom:30px;" >
+            <button style="width:30%" type="submit"><i class="iconfont-sm" style="font-size: 26px;">&#xe6a9;</i><span>提交留言</span></button>
           </div>
         </form>
       </div>
@@ -82,6 +82,9 @@ export default {
     border-radius: 10px;
   }
  .fromWrap button {
+   line-height:18px;
+   position: relative;
+   color: white;
    border-radius: 10px;
    border: solid 2px #a55f67;
    background-color: #a55f67;
@@ -92,6 +95,14 @@ export default {
  }
  input, button {
    height: 40px;
+ }
+ button span {
+   font-weight: 500;
+   padding-left: 28px;
+   font-size: 16px;
+ }
+ button i {
+   position: absolute;
  }
 </style>
 

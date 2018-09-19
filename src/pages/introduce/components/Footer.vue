@@ -8,7 +8,7 @@
       <i class="iconfont">&#xe6d4;</i>
       </div>
     </div> -->
-    <div><a href="#">回到顶部</a></div>
+    <div><a href="#"><i class="iconfont-sm">&#xe6ab;</i></a></div>
     <div>
       <h2>您是本站的第 {{this.pv}} 位访客</h2>
       <h2>Designed by zhutongtong.</h2>
