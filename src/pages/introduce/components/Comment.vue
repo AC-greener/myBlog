@@ -9,14 +9,14 @@
       <div class="fromWrap">
         <form  class="form" ref="form">
           <div style="margin-bottom:30px">
-            <input style="width:25%" type="text" placeholder="您的大名" name="userName" required>
+            <input style="width:25%" type="text" placeholder="您的大名*" name="userName" required>
             <input style="width:25%"  type="email" placeholder="邮箱" name="email">
           </div>
           <div style="margin-bottom:30px">
-            <textarea style="width:50%" id="" cols="30" rows="10" placeholder="留言内容" name="content" required></textarea>
+            <textarea style="width:50%" id="" cols="30" rows="10" placeholder="留言内容*" name="content" required></textarea>
           </div>
           <div style="margin-bottom:30px;" >
-            <button style="width:30%" type="button" @click="handleFormSubmit"><i class="iconfont-sm" style="font-size: 26px;">&#xe6a9;</i><span>提交留言</span></button>
+            <button ref="btn" style="width:30%; outline:none" type="button" @click="handleFormSubmit"><i class="iconfont-sm" style="font-size: 26px;">&#xe6a9;</i><span>提交留言</span></button>
           </div>
         </form>
       </div>
@@ -28,8 +28,10 @@ import axios from 'axios'
 export default {
   name: 'IntroduceHeader',
   methods: {
-    handleFormSubmit() {
+    handleFormSubmit(e) {
+      
       let formElement = this.$refs.form
+      let btn = this.$refs.btn
       let data = {
         'userName': '',
         'email': '',
@@ -38,13 +40,24 @@ export default {
       data.userName = formElement.elements['userName'].value
       data.email = formElement.elements['email'].value
       data.content = formElement.elements['content'].value
-      this.postCommentData(data)
+      if(data.userName == '' || data.content == '') {
+          btn.classList.toggle("animated");
+          btn.classList.toggle("shake");
+          setTimeout(function() {
+            btn.classList.toggle('animated')
+            btn.classList.toggle('shake')
+          },1000)
+      } else {
+        this.postCommentData(data)
+        formElement.elements['userName'].value = ''
+        formElement.elements['email'].value = ''
+        formElement.elements['content'].value = ''
+      }
     },
     postCommentData(data) {
       var that = this
       axios.post('http://localhost:3000/messageBoard', data)
         .then(function(response) {
-          console.log(response);
           that.$emit('showBox')
         })
         .catch(function(error) {

@@ -1,10 +1,8 @@
 <template>
     <header>
-  
        <h1 class="header animated zoomIn " >
         My Blog
       </h1>
-     
       <div class="category animated bounceInRight delay-1s">
         <div><router-link to="/" title="首页"><i class="iconfont-sm">&#xe61b;</i></router-link></div>
         <div><router-link to="/blog" title="我的博客"><i class="iconfont-sm">&#xe61c;</i></router-link></div>

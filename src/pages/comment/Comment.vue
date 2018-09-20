@@ -11,14 +11,14 @@
         <form class="doComment" ref="form">
           <div>
             <img class="img" src="@/assets/img/user.png" alt="用户头像  ">
-            <input style="margin-left:100px; margin-top:-50px; display:block" name="userName" type="text" placeholder="在此输入您的大名" required>
+            <input style="margin-left:100px; margin-top:-50px; display:block" name="userName" type="text" placeholder="在此输入您的大名*" required>
           </div>
           <div>
-            <textarea name="content" id=""  rows="6" style="margin-right:10%; width:100%;" placeholder="我也来说几句" required></textarea>
+            <textarea name="content" id=""  rows="6" style="margin-right:10%; width:100%;" placeholder="我也来说几句*" required></textarea>
           </div>
           <div>
             <input type="email" placeholder="Email地址" name="email">
-            <button type="button" @click="handleFormSubmit">提交</button>
+            <button type="button" ref="btn" @click="handleFormSubmit">提交</button>
           </div>
         </form>
         <div class="peopleCommentWrap"  v-for="(item, index) in commentList" :key="index">
@@ -61,6 +61,7 @@ export default {
   methods: {
     handleFormSubmit() {
       let formElement = this.$refs.form
+      let btn = this.$refs.btn
       let data = {
         'userName': '',
         'email': '',
@@ -69,7 +70,19 @@ export default {
       data.userName = formElement.elements['userName'].value
       data.email = formElement.elements['email'].value
       data.content = formElement.elements['content'].value
-      this.postCommentData(data)
+      if(data.userName == '' || data.content == '') {
+          btn.classList.toggle("animated");
+          btn.classList.toggle("shake");
+          setTimeout(function() {
+            btn.classList.toggle('animated')
+            btn.classList.toggle('shake')
+          },1000)
+      } else {
+        this.postCommentData(data)
+        formElement.elements['userName'].value = ''
+        formElement.elements['email'].value = ''
+        formElement.elements['content'].value = ''
+      }
     },
     postCommentData(data) {
       var that = this;

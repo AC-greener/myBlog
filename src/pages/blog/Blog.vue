@@ -6,6 +6,7 @@
         <div class="article" v-for="(item, index) in articleList" :key="index">
           <router-link :to='"/blog/article/" + item._id' class="more">more</router-link>
           <div class="imgWrapper">
+            <img src="@/assets/img/articleImg3.jpg" alt="" >
           </div>
           <div class="articleDetail">
             <div class="acticleName"><h1>{{item.articleName}}</h1></div>
@@ -91,7 +92,10 @@ export default {
 
 <style lang='scss' >
   $color: #428bca;
- 
+  img {
+    width:150px; 
+    height:150px
+  }
   .blogWrapper {
     width: 100%;
     background-color: #CDE;
@@ -165,6 +169,7 @@ export default {
     }
     img{
         width: 160px;
+        height: 160px;
       }
   }
   .imgWrapper {
