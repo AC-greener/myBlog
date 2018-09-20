@@ -1,44 +1,56 @@
 <template>
-  <div class="wrapper" :style="sty">
+  <div class="wrapper" >
       <div class="loginWrap">
-      <div class="loginHeader" :style="bgImg">
+      <div class="loginHeader">
         <h2 class="loginText">Login My Blog</h2>
       </div>
-      <form action="" method="POST" id="loginForm" class="loginForm">
-        <input type="text" placeholder="账号：" autofocus>
-        <input type="password" placeholder="密码：">
-        <button type="submit">登 录</button>
+      <form id="loginForm" class="loginForm" ref="form">
+        <input type="text" name="account" placeholder="账号：" autofocus>
+        <input type="password" name="password" placeholder="密码：">
+        <button ref="btn" type="button" @click="handleButtonClick">登 录</button>
       </form>	
     </div>
   </div>
 </template>
 
 <script>
-const url = require('../../../assets/img/3.png')
-const url2 = require('../../../assets/img/bg.jpg')
 export default {
   name: 'adminLogin',
-  data() {
-    return {
-      sty: {
-        height: '',
-        backgroundImage: "url(" + url + ")",
-      },
-      bgImg: {
-        backgroundImage: "url(" + url2 + ")"
+  methods: {
+    handleButtonClick() {
+      let formElements = this.$refs.form
+      let password = formElements.elements['password'].value
+      let account = formElements.elements['account'].value
+      this.judge(account, password)
+    },
+    judge(account, password) {
+      let btn = this.$refs.btn
+      if(account === 'admin' && password === 'zhu1053673440.') {
+        
+      } else {
+          btn.classList.toggle("animated");
+          btn.classList.toggle("shake");
+          setTimeout(function() {
+            btn.classList.toggle('animated')
+            btn.classList.toggle('shake')
+          },1000)
       }
     }
-  },
-  mounted() {
-    this.sty.height = window.innerHeight-2+'px'
   }
 }
 </script>
 
 <style scoped>
+h2 {
+  font-size: 26px;
+}
 .wrapper {
-  width: 100%;
-  border: 1px solid transparent;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-image: url('/static/img/loginBackground.png')
 }
 .loginWrap {
     width: 400px;
@@ -51,6 +63,7 @@ export default {
 .loginHeader {
     width: 100%;
     height: 120px;
+    background-image: url('/static/img/formHeader.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     border-top-left-radius: 10px;
@@ -85,6 +98,9 @@ export default {
   padding: 8px;
   outline: none;
   border-bottom: 1px solid #00000052;
+}
+button {
+  outline: none;
 }
 </style>
 

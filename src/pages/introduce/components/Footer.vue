@@ -1,20 +1,12 @@
 <template>
-  <section class="footer">
-    <!-- <div>
-      你可以在下面这些网站联系到我
-      <div>
-      <i class="iconfont">&#xe69a;</i>
-      <i class="iconfont">&#xe6a4;</i>
-      <i class="iconfont">&#xe6d4;</i>
-      </div>
-    </div> -->
+  <footer class="footer">
     <div><a href="#"><i class="iconfont-sm">&#xe6ab;</i></a></div>
     <div>
       <h2>您是本站的第 {{this.pv}} 位访客</h2>
       <h2>Designed by zhutongtong.</h2>
       <h2>Copyright ©2018 zhutongtong.cn All Rights Reserved.</h2>
     </div>
-  </section>
+  </footer>
 </template>
 
 <script>
@@ -27,7 +19,6 @@ export default {
 </script>
 
 <style scoped>
-
  * {
     font-family: "merriweather",SimSun,"宋体",serif;
     text-shadow: 0 2px 5px rgba(0,0,0,0.2); 
@@ -41,8 +32,7 @@ export default {
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-image: url('http://v5.res.dandyweng.com/images/patterns/concrete_wall.webp');
-
+    background-image: url('/static/img/footerBackground.webp');
   }
   a {
     text-decoration-line: none

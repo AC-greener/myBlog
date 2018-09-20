@@ -2,15 +2,8 @@
   <section  class="introduce">
     <div class="header">
       <div class="imgWrap" v-show="isShow">
-        <img class="img" src="@/assets/img/me.jpg" alt="">
+        <img class="img" src="/static/img/me.jpg" alt="">
       </div>
-      <!-- <div class="category">
-        <div><router-link to="/" title="首页"><i class="iconfont-sm">&#xe61b;</i></router-link></div>
-        <div><router-link to="/blog" title="我的博客"><i class="iconfont-sm">&#xe61c;</i></router-link></div>
-        <div><router-link to="/comment" title="留言板"><i class="iconfont-sm">&#xe744;</i></router-link></div>
-        <div><a href="https://codepen.io/ac-greener/" target="_blank" title="codepen"><i class="iconfont-sm">&#xe65b;</i></a></div>
-        <div><a href="https://github.com/AC-greener" target="_blank" title="github"><i class="iconfont-sm">&#xe6a4;</i></a></div>
-      </div> -->
 				<nav>
 					<div class="btn-menu" id="btnMenu" @click="Menu">
 						<span class="icon_open">&equiv;</span>
@@ -171,9 +164,6 @@ li:nth-child(5)
 	{0%{transform:rotate(288deg) scale(1,1)}100%{transform:rotate(288deg) scale(0,0)}}
 
 
-
-
-
 li a{
 	width:100%;
 	height:40px;
@@ -185,16 +175,6 @@ li a{
 	outline-width:none;
 	text-decoration:none
 	}
-
-/* li:nth-child(1) a{background:url('https://image.flaticon.com/icons/svg/185/185981.svg')} */
-  /* li:nth-child(2) a{background:url('https://image.flaticon.com/icons/svg/185/185961.svg')}
-  li:nth-child(3) a{background:url('https://image.flaticon.com/icons/svg/185/185985.svg')}
-  li:nth-child(4) a{background:url('https://image.flaticon.com/icons/svg/185/185983.svg')}
-  li:nth-child(5) a{background:url('https://image.flaticon.com/icons/svg/185/185963.svg')} */
-/* li:nth-child(6) a{background:url('https://image.flaticon.com/icons/svg/185/185964.svg')}
-li:nth-child(7) a{background:url('https://image.flaticon.com/icons/svg/185/185971.svg')}
-li:nth-child(8) a{background:url('https://image.flaticon.com/icons/svg/185/185988.svg')} */
-
 .title{
 	background:#000;
 	width:80px;
@@ -324,7 +304,7 @@ li a:hover .title
     width: 100%;
     height: 800px;
     color: #fff;
-    background-image: url('http://v5.res.dandyweng.com/images/backgrounds/intro.jpg');
+    background-image: url('/static/img/homeBackground.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-position: bottom center;

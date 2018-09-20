@@ -25,7 +25,7 @@
           </header>
         <form class="doComment" ref="form">
           <div>
-            <img class="img" src="@/assets/img/user.png" alt="用户头像  ">
+            <img class="img" src="/static/img/user.png" alt="用户头像  ">
             <input style="margin-left:100px; margin-top:-50px; display:block" name="userName"  type="text" placeholder="在此输入您的大名" required>
           </div>
           <div>
@@ -33,12 +33,12 @@
           </div>
           <div>
             <input type="email" placeholder="Email地址" name="email">
-            <button type="button" @click="handleButtonClick">提交</button>
+            <button ref="btn" type="button" @click="handleFormSubmit">提交</button>
           </div>
         </form>
         <div class="peopleCommentWrap" v-for="(item, index) in commentList" :key="index">
           <div>
-            <img class="img" src="@/assets/img/user.png" alt="用户头像  ">
+            <img class="img" src="/static/img/user.png" alt="用户头像  ">
             <span class="userName">{{item.userName}}</span>
           </div>
           <div class="peopleComment">
@@ -50,18 +50,24 @@
           </div> -->
         </div> 
     </div> 
+    <model-box v-show="showModelBox" @closeBox='close'/>
   </div>
 </template>
 
 <script>
+import ModelBox from '@/components/ModelBox'
 import axios from 'axios'
 export default {
   name: "BlogDetail",
+  components: {
+    ModelBox
+  },
   data() {
     return {
       article: {},
       commentList: [],
-      pv: 0
+      pv: 0,
+      showModelBox: false
     }
   },
   methods: {
@@ -81,8 +87,9 @@ export default {
         }
       }
     },
-    handleButtonClick() {
+    handleFormSubmit() {
       let formElement = this.$refs.form
+      let btn = this.$refs.btn
       let data = {
         'userName': '',
         'email': '',
@@ -95,13 +102,26 @@ export default {
       data.content = formElement.elements['content'].value
       data.id = this.article._id
       data.createTime = new Date().toLocaleString()
-      console.log(data)
-      this.postCommentData(data)
+      if(data.userName == '' || data.content == '') {
+          btn.classList.toggle("animated");
+          btn.classList.toggle("shake");
+          setTimeout(function() {
+            btn.classList.toggle('animated')
+            btn.classList.toggle('shake')
+          },1000)
+      } else {
+        this.postCommentData(data)
+        formElement.elements['userName'].value = ''
+        formElement.elements['email'].value = ''
+        formElement.elements['content'].value = ''
+      }
     },
     postCommentData(data) {
+      var that = this;
       axios.post('http://localhost:3000/articleComment', data)
         .then(function(response) {
           console.log(response);
+          that.showModelBox = true
         })
         .catch(function(error) {
           console.log(error);
@@ -117,7 +137,7 @@ export default {
     getCommentListSucc(res) {
       let data = res.data;
       this.commentList = data.filter(this.filterCommentList);
-      console.log("thisArticleCommentList",this.commentList);
+      // console.log("thisArticleCommentList",this.commentList);
     },
     filterCommentList(item) {
       let thisArticleId = this.article._id;
@@ -133,6 +153,9 @@ export default {
         .catch(function(err) {
           console.log(err)
         })
+    },
+    close() {
+      this.showModelBox = false
     }
   },
   mounted() {

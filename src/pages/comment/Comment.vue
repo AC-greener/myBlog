@@ -10,7 +10,7 @@
         </header>
         <form class="doComment" ref="form">
           <div>
-            <img class="img" src="@/assets/img/user.png" alt="用户头像  ">
+            <img class="img" src="/static/img/user.png" alt="用户头像  ">
             <input style="margin-left:100px; margin-top:-50px; display:block" name="userName" type="text" placeholder="在此输入您的大名*" required>
           </div>
           <div>
@@ -24,7 +24,7 @@
         <div class="peopleCommentWrap"  v-for="(item, index) in commentList" :key="index">
           <!-- v-for="(item, index) in commentList" :key="index" -->
           <div>
-            <img class="img" src="@/assets/img/user.png" alt="用户头像  ">
+            <img class="img" src="/static/img/user.png" alt="用户头像  ">
             <span class="userName">{{item.userName}} 说：</span>
             <span class="time">{{item.date}}</span>
           </div>

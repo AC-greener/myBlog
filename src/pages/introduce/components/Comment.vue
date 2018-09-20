@@ -93,7 +93,7 @@ export default {
     padding: 20px;
     height: 600px;
     width: 45%;
-    background-image: url(http://v5.res.dandyweng.com/images/patterns/envelope-border.png);
+    background-image: url('/static/img/formBorder.png');
     background-size: 140px;
     border-radius: 10px;
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, .2);

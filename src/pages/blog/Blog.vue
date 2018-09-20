@@ -6,7 +6,8 @@
         <div class="article" v-for="(item, index) in articleList" :key="index">
           <router-link :to='"/blog/article/" + item._id' class="more">more</router-link>
           <div class="imgWrapper">
-            <img src="@/assets/img/articleImg3.jpg" alt="" >
+            <!-- <img :src="'@/assets/img/articleImg'+ index + '.jpg'" alt="" > -->
+            <img :src='item.imgSrc' alt="" >
           </div>
           <div class="articleDetail">
             <div class="acticleName"><h1>{{item.articleName}}</h1></div>
@@ -48,8 +49,9 @@ export default {
     },
     getArticleListSucc(res) {
       let data = res.data;
-      console.log(data)
       this.list = data
+      this.randomImg(this.list)
+      console.log(this.list)
       this.totalPage = Math.ceil(data.length/5)
       this.$store.commit('changeArticleList', data)
     },
@@ -81,8 +83,16 @@ export default {
             this.articleList.push(this.list[i])
           }
         }
+    },
+    randomImg(list) {
+      let listLength = list.length;
+      for(let i = 0; i < listLength; i++) {
+        let number = Math.floor(Math.random()*13 + 1);
+        let imgSrc = '/static/img/articleImg' + number + '.jpg'
+        list[i].imgSrc = imgSrc
+        list[i].imgNumber = number
+      }
     }
-
   },
   mounted() {
     this.getArticleList()
