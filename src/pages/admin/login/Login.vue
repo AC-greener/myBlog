@@ -26,8 +26,10 @@ export default {
     judge(account, password) {
       let btn = this.$refs.btn
       if(account === 'admin' && password === 'zhu1053673440.') {
-        
+        console.log(this.$router)
+        this.$router.push({ path: '/admin' }) 
       } else {
+
           btn.classList.toggle("animated");
           btn.classList.toggle("shake");
           setTimeout(function() {
