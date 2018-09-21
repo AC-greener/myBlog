@@ -25,11 +25,16 @@ export default {
     },
     judge(account, password) {
       let btn = this.$refs.btn
-      if(account === 'admin' && password === 'zhu1053673440.') {
-        console.log(this.$router)
-        this.$router.push({ path: '/admin' }) 
+      if(account === 'admin' && password === 'admin') {
+        document.cookie = "loginState=ok";
+        this.goBack()
+          .then(() => {
+            this.$router.push({ path: '/admin' }) 
+          })
+          .catch(function(err) {
+            console.log(err)
+          })
       } else {
-
           btn.classList.toggle("animated");
           btn.classList.toggle("shake");
           setTimeout(function() {
@@ -37,6 +42,11 @@ export default {
             btn.classList.toggle('shake')
           },1000)
       }
+    },
+    goBack() {
+      return new Promise(function(resolve, reject) {
+        resolve()
+      })
     }
   }
 }

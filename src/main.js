@@ -7,13 +7,19 @@ import 'animate.css'
 
 //后台路由守卫
 router.beforeEach((to, from, next) => {
-  let RegExp = /^\/admin/;
-  if(RegExp.test(to.path)) {
-    next({path: '/login'})   //   重定向到/login路由下
-  } else {
+  if(document.cookie.indexOf('loginState')) {
     next()
+  } else {
+    let RegExp = /^\/admin/;
+    if(RegExp.test(to.path)) {
+      next({path: '/login'})   //   重定向到/login路由下
+    } else {
+      next()
+    }
   }
+
 })
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
