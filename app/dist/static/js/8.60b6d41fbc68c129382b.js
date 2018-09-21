@@ -1,0 +1,2 @@
+webpackJsonp([8],{rNaM:function(t,e){},uOzr:function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r={render:function(){var t=this.$createElement;return(this._self._c||t)("div",[this._v("\n  分类列表\n")])},staticRenderFns:[]};var a=n("C7Lr")({name:"AdminCategorytList",data:function(){return{}}},r,!1,function(t){n("rNaM")},"data-v-639ac4a4",null);e.default=a.exports}});
+//# sourceMappingURL=8.60b6d41fbc68c129382b.js.map

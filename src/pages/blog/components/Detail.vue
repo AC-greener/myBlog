@@ -166,7 +166,7 @@ export default {
 }
 </script>
 
-<style lang='scss'>
+<style lang='scss' scoped>
 
   $color: #428bca;
   h1, h2, h3, h4, h5 {

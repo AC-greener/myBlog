@@ -1,3 +1,5 @@
+const fs = require('fs')
+const path = require('path')
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser')
@@ -24,7 +26,16 @@ app.all('*', function(req, res, next) {
   next();
 });
 
+app.use(express.static(path.resolve(__dirname, './dist')))
+
+
 app.use('/messageBoard', messageBoardRoute)    //使用指定的中间件
+
+app.get('/', function(req, res) {
+  const html = fs.readFileSync(path.resolve(__dirname, './dist/index.html'), 'utf-8')
+  res.send(html)
+})
+
 app.get('/getCommentList', function(req, res) {
   MessageBoard.find({}, function(err, result) {
     if(err) {
