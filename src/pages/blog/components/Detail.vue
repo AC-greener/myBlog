@@ -10,9 +10,8 @@
       </div>
       <h1 class="header animated zoomIn">
         {{article.articleName}}
-
       </h1>
-      <div class="createTime">时间 {{article.createTime.replace('/', '.').replace('/', '.')}}&nbsp;&nbsp;阅读 {{this.pv}}&nbsp;&nbsp;评论 {{commentList.length}}&nbsp;&nbsp;</div>
+      <div class="createTime">时间 {{article.createTime.replace(/\//g, '.')}}&nbsp;&nbsp;阅读 {{this.pv}}&nbsp;&nbsp;评论 {{commentList.length}}&nbsp;&nbsp;</div>
    
     </header>
       
@@ -26,10 +25,10 @@
         <form class="doComment" ref="form">
           <div>
             <img class="img" src="/static/img/user.png" alt="用户头像  ">
-            <input style="margin-left:100px; margin-top:-50px; display:block" name="userName"  type="text" placeholder="在此输入您的大名" required>
+            <input style="margin-left:100px; margin-top:-50px; display:block" name="userName"  type="text" placeholder="在此输入您的大名*" required>
           </div>
           <div>
-            <textarea name="content" id=""  rows="5" style="margin-right:10%; width:100%;" placeholder="我也来说几句" required></textarea>
+            <textarea name="content" id=""  rows="5" style="margin-right:10%; width:100%;" placeholder="我也来说几句*" required></textarea>
           </div>
           <div>
             <input type="email" placeholder="Email地址" name="email">
@@ -39,16 +38,17 @@
         <div class="peopleCommentWrap" v-for="(item, index) in commentList" :key="index">
           <div>
             <img class="img" src="/static/img/user.png" alt="用户头像  ">
-            <span class="userName">{{item.userName}}</span>
+            <span class="userName">{{item.userName}} 说：</span>
+            <span class="time">{{item.createTime}}</span>
           </div>
           <div class="peopleComment">
-            {{item.content}}
+         {{item.content}}
           </div>
           <!-- <div class="doLike">
             <span class="like">喜欢</span>
             <span class="dislike" style="margin-left:50px">不喜欢</span>
           </div> -->
-        </div> 
+      </div> 
     </div> 
     <model-box v-show="showModelBox" @closeBox='close'/>
   </div>
@@ -168,24 +168,40 @@ export default {
 
 <style lang='scss'>
 
- $color: #428bca;
- h1, h2, h3, h4, h5, h6 {
-     font-size: 20px;
-     font-weight: 800;
-}
-h1 {
-font-size: 20px;
-}
-h2 {
-font-size: 2px;
-}
-h3 {
-font-size: 23px;
-}
-h4 {
-
-font-size: 20px;
-}
+  $color: #428bca;
+  h1, h2, h3, h4, h5 {
+    font-weight: bold;
+  }
+  h1 {
+    font-size: 28px;
+  }
+  h2 {
+    font-size: 24px;
+  }
+  h3 {
+    font-size: 20px;
+  }
+  h4 {
+    font-size: 18px;
+  }
+  p {
+    font-size: 15px;
+  }
+  pre {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border:  1px solid grey;
+    border-radius: 5px;
+  }
+  ol, ul {
+    padding-left: 30px;
+    // list-style: none;
+  }
+  img {
+    border-radius: 4px;
+    width: 300px;
+  }
   .category a {
     color: #fff; 
     text-decoration: none;
@@ -282,21 +298,30 @@ font-size: 20px;
     height: 40px;
     width: 10%;
   }
-  .peopleCommentWrap {
+ .peopleCommentWrap {
     width: 80%;
     display: flex;
     flex-direction: column;
     background-color: white;
     margin: 30px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    padding-bottom: 20px;
   }
   .peopleCommentWrap div {
+    margin: 10px;
     margin-left: 40px;
   }
   .userName {
     position: absolute;
     margin-left: 16px; 
     margin-top: 26px; 
+  }
+  .time {
+    position: absolute;
+    font-size: 12px;
+    color: #969696;
+    margin-left: 16px;
+    margin-top: 52px;
   }
   .doLike {
     margin-bottom: 10px;

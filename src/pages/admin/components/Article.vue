@@ -10,13 +10,14 @@
       <div>
         <label for="articleCategory">分类：</label><input type="text" name="articleCategory" id="articleCategory">
       </div>
-      <div>
+      <!-- <div>
        <label for="articleContent" style="position:absolute">内容：</label> <textarea style="margin-left:126px;" name="articleContent"  cols="30" rows="20" id="articleContent"></textarea>
-      </div>
+      </div> -->
       <div style="margin-left:-20px;">
         <input type="button" value='提交' @click="handleButtonClick" >
       </div>
     </form>
+      <mavon-editor v-model="value"  :ishljs = "true" ref="md"/>
   </div>
 </template>
 
@@ -26,7 +27,7 @@ export default {
   name: 'AdminArticle',
   data () {
     return {
-     
+      value: ''
     }
   },
   methods: {
@@ -41,9 +42,11 @@ export default {
       }
       data.articleName  = formElement['articleName'].value;
       data.articleTitle  = formElement['articleTitle'].value;
-      data.articleContent  = formElement['articleContent'].value;
+      // data.articleContent  = formElement['articleContent'].value;
+      data.articleContent = document.getElementsByClassName('v-show-content')[0].innerHTML
       data.articleCategory  = formElement['articleCategory'].value;
       data.createTime = new Date().toLocaleString();
+      console.log(document.getElementsByClassName('v-show-content')[0].innerHTML)
       this.postArticleData(data);
     },
     postArticleData(data) {

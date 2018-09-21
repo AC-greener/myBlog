@@ -22,6 +22,7 @@
     "animate.css": "^3.7.0",
     "axios": "^0.18.0",
     "font-awesome": "^4.7.0",
+    "mavon-editor": "^2.6.17",
     "sass-loader": "^7.1.0",
     "vue": "^2.5.2",
     "vue-awesome": "^3.1.2",

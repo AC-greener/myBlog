@@ -5,6 +5,11 @@ import store from './store/index'
 import '@/assets/font/iconfont.css'
 import 'animate.css'
 
+//use markdown
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+Vue.use(mavonEditor)
+
 //后台路由守卫
 router.beforeEach((to, from, next) => {
   if(document.cookie.indexOf('loginState')) {
