@@ -3,7 +3,9 @@ const path = require('path')
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser')
+var ejs = require('ejs');
 
+var router = express.Router();
 var messageBoardRoute = require('./routes/messageBoard');
 
 //引入数据库实体
@@ -26,15 +28,20 @@ app.all('*', function(req, res, next) {
   next();
 });
 
-app.use(express.static(path.resolve(__dirname, './dist')))
+//设置视图引擎
+app.set('views', path.join(__dirname, 'public'));
 
+
+app.set('view engine', 'html');
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+router.get('/', function(req, res) {
+  // res.type('html')
+  res.render('index ');
+})
 
 app.use('/messageBoard', messageBoardRoute)    //使用指定的中间件
-
-app.get('/', function(req, res) {
-  const html = fs.readFileSync(path.resolve(__dirname, './dist/index.html'), 'utf-8')
-  res.send(html)
-})
 
 app.get('/getCommentList', function(req, res) {
   MessageBoard.find({}, function(err, result) {

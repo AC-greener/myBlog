@@ -3,10 +3,9 @@
     <blog-header />
     <article style="width:100%">
       <div class="articleList">
-        <div class="article" v-for="(item, index) in articleList" :key="index">
+        <div class="article" v-for="(item, index) in currentArticleList" :key="index">
           <router-link :to='"/blog/article/" + item._id' class="more">more</router-link>
           <div class="imgWrapper">
-            <!-- <img :src="'@/assets/img/articleImg'+ index + '.jpg'" alt="" > -->
             <img :src='item.imgSrc' alt="" >
           </div>
           <div class="articleDetail">
@@ -18,9 +17,9 @@
       </div>
     </article>
     <div class="pagination">
-      <span class="prev animated fadeInLeft" @click="changePageListPrev" v-show="page!=1"><i class="iconfont-sm" style="color: #428bca;">&#xe613;</i></span>
-      <span style="color:rgba(124, 122, 122, 0.8);">{{this.page}} / {{this.totalPage}}</span>
-      <span class="next animated fadeInRight" @click="changePageListNext" v-show="page!=totalPage" ><i class="iconfont-sm" style="color: #428bca;">&#xe651;</i></span>
+      <span class="prev animated fadeInLeft" @click="changePageListPrev" v-show="currentPage!=1"><i class="iconfont-sm" style="color: #428bca;">&#xe613;</i></span>
+      <span style="color:rgba(124, 122, 122, 0.8);">{{this.currentPage}} / {{this.totalPage}}</span>
+      <span class="next animated fadeInRight" @click="changePageListNext" v-show="currentPage!=totalPage" ><i class="iconfont-sm" style="color: #428bca;">&#xe651;</i></span>
     </div>
   </div>
 </template>
@@ -35,52 +34,53 @@ export default {
   },
   data() {
     return {
-      articleList: [],
-      page: 1,
+      currentArticleList: [],
+      currentPage: 1,
       totalPage: 1,
-      list:[]
+      totalArticleList:[],
+      count:5
     }
   },
   methods: {
-    getArticleList() {
+    getcurrentArticleList() {
       axios.get('http://localhost:3000/getArticleList')
-          .then(this.getArticleListSucc)
+          .then(this.getcurrentArticleListSucc)
           .then(this.initPageList)
     },
-    getArticleListSucc(res) {
+    getcurrentArticleListSucc(res) {
       let data = res.data;
-      this.list = data
-      this.randomImg(this.list)
-      console.log(this.list)
+      this.totalArticleList = data
+      this.randomImg(this.totalArticleList)
+      console.log(this.totalArticleList)
       this.totalPage = Math.ceil(data.length/5)
       this.$store.commit('changeArticleList', data)
     },
     changePageListNext() {
-      if(this.page < this.totalPage) {
-        this.page++;
-        this.articleList = []
-        for(let i = (this.page-1)*5; i < this.page*5; i++) {
-          if(this.list[i]) {
-            this.articleList.push(this.list[i])
+      if(this.currentPage < this.totalPage) {
+        this.currentPage++;  //点击后当前页码加一
+        this.currentArticleList = []
+        for(let i = (this.currentPage-1)*this.count; i < this.currentPage*this.count; i++) {
+          if(this.totalArticleList[i]) {
+            this.currentArticleList.push(this.totalArticleList[i])
           }
         }
       }
     },
     changePageListPrev() {
-      if(this.page > 1) {
-        this.page--;
-        this.articleList = []
-        for(let i = (this.page-1)*5; i < this.page*5; i++) {
-          if(this.list[i]) {
-            this.articleList.push(this.list[i])
+      if(this.currentPage > 1) {
+        this.currentPage--;  //点击后当前页码减一
+        this.currentArticleList = []
+        for(let i = (this.currentPage-1)*this.count; i < this.currentPage*this.count; i++) {
+          if(this.totalArticleList[i]) {
+            this.currentArticleList.push(this.totalArticleList[i])
           }
         }
       }
     },
     initPageList() {
-      for(let i = (this.page-1)*5; i < this.page*5; i++) {
-          if(this.list[i]) {
-            this.articleList.push(this.list[i])
+      for(let i = (this.currentPage-1)*this.count; i < this.currentPage*this.count; i++) {
+          if(this.totalArticleList[i]) {
+            this.currentArticleList.push(this.totalArticleList[i])
           }
         }
     },
@@ -95,7 +95,7 @@ export default {
     }
   },
   mounted() {
-    this.getArticleList()
+    this.getcurrentArticleList()
   }
 }
 </script>
