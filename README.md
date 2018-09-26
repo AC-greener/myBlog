@@ -9,3 +9,11 @@
 1. 
 
 <img src='https://github.com/AC-greener/myblog/blob/master/imgs/blogImg1.gif' width=100% height=100%/>
+
+2. 
+
+<img src='https://github.com/AC-greener/myblog/blob/master/imgs/blogImg2.gif' width=100% height=100%/>
+
+3. 
+
+<img src='https://github.com/AC-greener/myblog/blob/master/imgs/blogImg3.gif' width=100% height=100%/>
