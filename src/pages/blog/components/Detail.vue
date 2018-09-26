@@ -11,7 +11,7 @@
       <h1 class="header animated zoomIn">
         {{article.articleName}}
       </h1>
-      <div class="createTime">时间 {{article.createTime.replace(/\//g, '.')}}&nbsp;&nbsp;阅读 {{this.pv}}&nbsp;&nbsp;评论 {{commentList.length}}&nbsp;&nbsp;</div>
+      <div class="createTime">时间 {{article.createTime}}&nbsp;&nbsp;阅读 {{this.pv}}&nbsp;&nbsp;评论 {{commentList.length}}&nbsp;&nbsp;</div>
    
     </header>
       
@@ -81,8 +81,7 @@ export default {
       for(let i = 0; i < articleList.length; i++) {
         if(articleList[i]._id === id) {
           this.article = articleList[i];
-          // this.article.articleContent.toString()
-          // this.domParser(this.article.articleContent)
+          this.article.createTime.replace(/\//g, '.')
           break;
         }
       }
@@ -166,7 +165,7 @@ export default {
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang='scss' scoped >
 
   $color: #428bca;
   h1, h2, h3, h4, h5 {
@@ -191,7 +190,7 @@ export default {
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 10px;
-    border:  1px solid grey;
+    border:  1px solid #8080805c;
     border-radius: 5px;
   }
   ol, ul {
@@ -200,7 +199,8 @@ export default {
   }
   img {
     border-radius: 4px;
-    width: 300px;
+    width: 100%;
+    height: 100%;
   }
   .category a {
     color: #fff; 

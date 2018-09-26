@@ -102,6 +102,13 @@ export default {
 
 <style lang='scss' >
   $color: #428bca;
+   pre {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border:  1px solid #8080805c;
+    border-radius: 5px;
+  }
   img {
     width:150px; 
     height:150px

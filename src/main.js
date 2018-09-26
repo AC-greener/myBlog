@@ -12,7 +12,7 @@ Vue.use(mavonEditor)
 
 //后台路由守卫
 router.beforeEach((to, from, next) => {
-  if(document.cookie.indexOf('loginState')) {
+  if(document.cookie.indexOf('loginState') >= 0 ) {
     next()
   } else {
     let RegExp = /^\/admin/;
