@@ -1,21 +1,20 @@
 # myblog
+## 还未完成项目的部署
 
 > A Vue.js project
 
-## Build Setup
+前后端分离搭建的博客。前端采用vue，用vue-router来控制路由跳转，用vuex来管理全局数据，使用axios发送ajax请求。 后台使用nodeJs，用MongoDB来存储博客数据。
 
-``` bash
-# install dependencies
-npm install
+下面是项目的一些图片：
 
-# serve with hot reload at localhost:8080
-npm run dev
+1. 
 
-# build for production with minification
-npm run build
+<img src='https://github.com/AC-greener/myblog/blob/master/imgs/blogImg1.gif' width=100% height=100%/>
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
+2. 
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+<img src='https://github.com/AC-greener/myblog/blob/master/imgs/blogImg2.gif' width=100% height=100%/>
+
+3. 
+
+<img src='https://github.com/AC-greener/myblog/blob/master/imgs/blogImg3.gif' width=100% height=100%/>
