@@ -117,7 +117,7 @@ export default {
     },
     postCommentData(data) {
       var that = this;
-      axios.post('http://localhost:3000/articleComment', data)
+      axios.post('/articleComment', data)
         .then(function(response) {
           console.log(response);
           that.showModelBox = true
@@ -127,7 +127,7 @@ export default {
         })
     },
     getCommentList() {
-      axios.get('http://localhost:3000/articleComment')
+      axios.get('/articleComment')
         .then(this.getCommentListSucc)
         .catch(function(error) {
           console.log(error)
@@ -144,7 +144,7 @@ export default {
     },
     updateArticlePv(data) {
       let that = this
-      axios.post('http://localhost:3000/updateArticlePV', data)
+      axios.post('/updateArticlePV', data)
         .then(function(response) {
           that.pv = response.data.pv
           // console.log(response.data.pv)

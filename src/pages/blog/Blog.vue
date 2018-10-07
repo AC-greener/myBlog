@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     getcurrentArticleList() {
-      axios.get('http://localhost:3000/getArticleList')
+      axios.get('/getArticleList')
           .then(this.getcurrentArticleListSucc)
           .then(this.initPageList)
     },

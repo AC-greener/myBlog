@@ -30,7 +30,7 @@ export default {
   methods: {
     updatePv() {
       let that = this
-      axios.post('http://localhost:3000/updatePV')
+      axios.post('/updatePV')
         .then(function(response) {
           that.pv = response.data.pv
         })

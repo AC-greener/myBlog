@@ -30,7 +30,7 @@ import axios from 'axios'
     },
     methods: {
     getArticleList() {
-      axios.get('http://localhost:3000/getArticleList')
+      axios.get('/getArticleList')
           .then(this.getArticleListSucc)
           .catch(function(err) {
             console.log(err);

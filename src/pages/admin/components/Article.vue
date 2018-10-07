@@ -50,7 +50,7 @@ export default {
       this.postArticleData(data);
     },
     postArticleData(data) {
-      axios.post('http://localhost:3000/addArticle', data)
+      axios.post('/addArticle', data)
         .then(function(response) {
           console.log(response)
         })

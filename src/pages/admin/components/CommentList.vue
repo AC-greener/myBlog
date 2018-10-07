@@ -32,7 +32,7 @@
     },
     methods: {
       getCommentList() {
-        axios.get('http://localhost:3000/getCommentList')
+        axios.get('/getCommentList')
           .then(this.getCommentListSucc)
           .catch(function(err) {
             console.log(err);

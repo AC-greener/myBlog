@@ -86,7 +86,7 @@ export default {
     },
     postCommentData(data) {
       var that = this;
-      axios.post('http://localhost:3000/messageBoard', data)
+      axios.post('/messageBoard', data)
         .then(function(response) {
           console.log(response);
           that.showModelBox = true
@@ -96,7 +96,7 @@ export default {
         })
     },
     getCommentList() {
-      axios.get('http://localhost:3000/getCommentList')
+      axios.get('/getCommentList')
           .then(this.getCommentListSucc)
           .catch(function(err) {
             console.log(err);

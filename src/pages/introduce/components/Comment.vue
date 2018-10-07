@@ -56,7 +56,7 @@ export default {
     },
     postCommentData(data) {
       var that = this
-      axios.post('http://localhost:3000/messageBoard', data)
+      axios.post('/messageBoard', data)
         .then(function(response) {
           that.$emit('showBox')
         })

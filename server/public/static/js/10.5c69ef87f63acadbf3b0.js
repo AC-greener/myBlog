@@ -1,2 +1,0 @@
-webpackJsonp([10],{"0nRg":function(n,t){},qzTn:function(n,t,e){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a={render:function(){var n=this.$createElement;return(this._self._c||n)("div",{staticStyle:{height:"500px",padding:"10px"}},[this._v("\n  添加分类\n")])},staticRenderFns:[]};var r=e("C7Lr")({name:"AdminCategory",data:function(){return{}}},a,!1,function(n){e("0nRg")},"data-v-41a921f2",null);t.default=r.exports}});
-//# sourceMappingURL=10.5c69ef87f63acadbf3b0.js.map
