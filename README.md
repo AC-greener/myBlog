@@ -1,5 +1,4 @@
 # myblog
-## 还未完成项目的部署
 
 > A Vue.js project
 
